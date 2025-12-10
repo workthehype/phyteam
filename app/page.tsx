@@ -1,11 +1,82 @@
-import Image from "next/image";
+import HeroSection from "./components/HeroSection";
+import ExpertiseSection from "./components/ExpertiseSection";
+import WhyChooseSection from "./components/WhyChooseSection";
+import StatsSection from "./components/StatsSection";
+import TestimonialsSection from "./components/TestimonialsSection";
+import PricingSection from "./components/PricingSection";
+import CTASection from "./components/CTASection";
+import FooterSection from "./components/FooterSection";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-      
-      </main>
+    <div className="min-h-screen bg-[#0a1e2e] text-white">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a1e2e]/80 backdrop-blur-md border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <Link
+            href="/"
+            className="text-2xl font-bold tracking-wider hover:opacity-80 transition"
+          >
+            Phy<span className="text-cyan-400">team</span>
+          </Link>
+          <nav className="hidden md:flex items-center gap-8">
+            <Link href="/" className="text-cyan-400 font-semibold">
+              Home
+            </Link>
+            <Link
+              href="#services"
+              className="text-gray-300 hover:text-white transition"
+            >
+              Services
+            </Link>
+            <Link
+              href="/about"
+              className="text-gray-300 hover:text-white transition"
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="text-gray-300 hover:text-white transition"
+            >
+              Contact
+            </Link>
+          </nav>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/contact"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition"
+            >
+              Book a Call
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Expertise Section */}
+      <ExpertiseSection />
+
+      {/* Why Choose Us */}
+      <WhyChooseSection />
+
+      {/* Stats Section */}
+      <StatsSection />
+
+      {/* Testimonials */}
+      <TestimonialsSection />
+
+      {/* Pricing */}
+      <PricingSection />
+
+      {/* CTA Section */}
+      <CTASection />
+
+      {/* Footer */}
+      <FooterSection />
     </div>
   );
 }
