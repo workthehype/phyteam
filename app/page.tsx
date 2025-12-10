@@ -4,6 +4,8 @@ import WhyChooseSection from "./components/WhyChooseSection";
 import StatsSection from "./components/StatsSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import PricingSection from "./components/PricingSection";
+import CTASection from "./components/CTASection";
+import FooterSection from "./components/FooterSection";
 import Link from "next/link";
 
 export default function Home() {
@@ -70,12 +72,11 @@ export default function Home() {
       {/* Pricing */}
       <PricingSection />
 
+      {/* CTA Section */}
+      <CTASection />
+
       {/* Footer */}
-      <footer className="bg-[#0a1e2e] border-t border-gray-800 py-12 px-6">
-        <div className="max-w-6xl mx-auto text-center text-gray-500 text-sm">
-          <p>© 2025 phyteam. All rights reserved.</p>
-        </div>
-      </footer>
+      <FooterSection />
     </div>
   );
 }

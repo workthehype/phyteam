@@ -12,7 +12,7 @@ const PricingSection = () => {
     {
       name: "Starter Plan",
       description: "For small businesses beginning their digital journey.",
-      price: "$499",
+      price: "Rs 4999",
       period: "/mo",
       features: [
         "Basic IT Consulting",
@@ -28,7 +28,7 @@ const PricingSection = () => {
     {
       name: "Growth Plan",
       description: "For scaling companies that need ongoing support.",
-      price: "$1,499",
+      price: "Rs 14,999",
       period: "/mo",
       features: [
         "Cloud & AI consulting",
@@ -47,7 +47,7 @@ const PricingSection = () => {
       name: "Professional Plan",
       description:
         "For mid-to-large businesses that need advanced, ongoing support.",
-      price: "$2,999",
+      price: "Rs 24999",
       period: "/mo",
       features: [
         "Advanced cloud architecture & optimization",
