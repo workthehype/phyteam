@@ -140,36 +140,11 @@ const ExpertiseSection = () => {
       ref={sectionRef}
       className="relative py-24 px-6 bg-gradient-to-b from-black via-[#0a0f1a] to-black overflow-hidden"
     >
-      {/* Background effects */}
+      {/* Background effects - static for performance */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated gradient orbs */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.05, 0.1, 0.05],
-            x: [0, 50, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-20 -left-40 w-[500px] h-[500px] bg-cyan-500 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.05, 0.1, 0.05],
-            x: [0, -50, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-          className="absolute bottom-20 -right-40 w-[500px] h-[500px] bg-purple-500 rounded-full blur-3xl"
-        />
+        {/* Static gradient orbs */}
+        <div className="absolute top-20 -left-40 w-[500px] h-[500px] bg-cyan-500 rounded-full blur-3xl opacity-[0.07]" />
+        <div className="absolute bottom-20 -right-40 w-[500px] h-[500px] bg-purple-500 rounded-full blur-3xl opacity-[0.07]" />
 
         {/* Grid pattern */}
         <div

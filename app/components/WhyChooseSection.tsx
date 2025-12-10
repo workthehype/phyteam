@@ -91,34 +91,10 @@ const WhyChooseSection = () => {
       ref={sectionRef}
       className="py-24 px-6 bg-gradient-to-b from-[#0a1e2e] via-[#0f1820] to-black relative overflow-hidden"
     >
-      {/* Animated background elements */}
+      {/* Background elements - static for performance */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-            opacity: [0.03, 0.06, 0.03],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute -top-1/2 -left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-            opacity: [0.03, 0.06, 0.03],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute -bottom-1/2 -right-1/4 w-[800px] h-[800px] bg-gradient-to-br from-purple-500 to-pink-500 rounded-full blur-3xl"
-        />
+        <div className="absolute -top-1/2 -left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-cyan-500 to-blue-500 rounded-full blur-3xl opacity-[0.04]" />
+        <div className="absolute -bottom-1/2 -right-1/4 w-[800px] h-[800px] bg-gradient-to-br from-purple-500 to-pink-500 rounded-full blur-3xl opacity-[0.04]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -219,21 +195,13 @@ const WhyChooseSection = () => {
                         {card.icon}
                       </motion.div>
 
-                      {/* Animated lines/patterns */}
+                      {/* Static pattern lines */}
                       <div className="absolute inset-0 opacity-20">
-                        {[...Array(5)].map((_, i) => (
-                          <motion.div
+                        {[...Array(3)].map((_, i) => (
+                          <div
                             key={i}
-                            initial={{ opacity: 0.3, x: -100 }}
-                            animate={{ opacity: [0.3, 0.6, 0.3], x: 100 }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              delay: i * 0.2,
-                              ease: "linear",
-                            }}
-                            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
-                            style={{ top: `${20 + i * 20}%`, width: "150%" }}
+                            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
+                            style={{ top: `${20 + i * 20}%`, width: "100%" }}
                           />
                         ))}
                       </div>
@@ -248,25 +216,7 @@ const WhyChooseSection = () => {
                     {card.description}
                   </motion.p>
 
-                  {/* Floating particles on hover */}
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileHover={{
-                        opacity: [0, 1, 0],
-                        scale: [0, 1, 0],
-                        y: [0, -50],
-                        x: [0, (i - 1) * 20],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                      className="absolute bottom-4 left-1/2 w-2 h-2 bg-cyan-400 rounded-full"
-                    />
-                  ))}
+                  {/* Floating particles removed for performance */}
                 </div>
 
                 {/* Corner accent */}

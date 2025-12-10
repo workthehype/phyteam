@@ -125,29 +125,7 @@ const PricingSection = () => {
         </motion.svg>
       </div>
 
-      {/* Floating particles */}
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: [0, 0.5, 0],
-            y: [0, -150],
-            x: [0, Math.random() * 50 - 25],
-          }}
-          transition={{
-            duration: 4 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-            ease: "easeOut",
-          }}
-          className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            bottom: "0%",
-          }}
-        />
-      ))}
+      {/* Floating particles disabled for performance */}
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Title */}

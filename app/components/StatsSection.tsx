@@ -28,18 +28,18 @@ const StatsSection = () => {
             style={{ height: "40%" }}
           >
             <motion.path
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.3 } : {}}
-              transition={{ duration: 2, ease: "easeInOut" }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 0.3 } : {}}
+              transition={{ duration: 1 }}
               fill="none"
               stroke="url(#gradient1)"
               strokeWidth="2"
               d="M0,160 C320,100 420,180 720,160 C1020,140 1120,200 1440,180 L1440,0 L0,0 Z"
             />
             <motion.path
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.2 } : {}}
-              transition={{ duration: 2.5, ease: "easeInOut", delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 0.2 } : {}}
+              transition={{ duration: 1, delay: 0.2 }}
               fill="none"
               stroke="url(#gradient1)"
               strokeWidth="2"
@@ -62,16 +62,16 @@ const StatsSection = () => {
             style={{ height: "50%" }}
           >
             <motion.path
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.4 } : {}}
-              transition={{ duration: 2, ease: "easeInOut", delay: 0.3 }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 0.4 } : {}}
+              transition={{ duration: 1, delay: 0.3 }}
               fill="url(#gradient2)"
               d="M0,224 C320,160 420,240 720,224 C1020,208 1120,256 1440,240 L1440,320 L0,320 Z"
             />
             <motion.path
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 0.3 } : {}}
-              transition={{ duration: 2.5, ease: "easeInOut", delay: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 0.3 } : {}}
+              transition={{ duration: 1, delay: 0.5 }}
               fill="url(#gradient3)"
               d="M0,256 C320,192 420,272 720,256 C1020,240 1120,288 1440,272 L1440,320 L0,320 Z"
             />
@@ -169,29 +169,7 @@ const StatsSection = () => {
         </div>
       </div>
 
-      {/* Floating particles */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 0 }}
-          animate={{
-            opacity: [0, 0.6, 0],
-            y: [0, -100, -200],
-            x: [0, Math.random() * 100 - 50, Math.random() * 100 - 50],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 2,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-            ease: "easeOut",
-          }}
-          className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-          style={{
-            left: `${Math.random() * 100}%`,
-            bottom: "10%",
-          }}
-        />
-      ))}
+      {/* Floating particles disabled for performance */}
     </section>
   );
 };

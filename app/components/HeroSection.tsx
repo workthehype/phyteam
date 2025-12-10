@@ -1,17 +1,11 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const HeroSection = () => {
-  const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Page load animations
   const containerVariants = {
@@ -42,43 +36,13 @@ const HeroSection = () => {
     <section className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#0a1e2e] via-[#0d2535] to-[#0a1e2e]">
       {/* Animated background layers */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large gradient orbs */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            x: [0, -50, 0],
-            y: [0, 30, 0],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3,
-          }}
-          className="absolute -bottom-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-purple-600 to-pink-500 rounded-full blur-3xl"
-        />
+        {/* Large gradient orbs - static for performance */}
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full blur-3xl opacity-20" />
+        <div className="absolute -bottom-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-purple-600 to-pink-500 rounded-full blur-3xl opacity-20" />
 
-        {/* Animated grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
-          transition={{ duration: 2 }}
-          className="absolute inset-0"
+        {/* Animated grid - static for better performance */}
+        <div
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(6, 182, 212, 0.3) 1px, transparent 1px),
@@ -88,45 +52,15 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Floating particles */}
-        {mounted &&
-          [...Array(30)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{
-                opacity: 0,
-                x: Math.random() * window.innerWidth,
-                y: window.innerHeight + 100,
-              }}
-              animate={{
-                opacity: [0, 0.6, 0],
-                y: -100,
-                x: Math.random() * window.innerWidth,
-              }}
-              transition={{
-                duration: 10 + Math.random() * 10,
-                repeat: Infinity,
-                delay: Math.random() * 10,
-                ease: "linear",
-              }}
-              className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-            />
-          ))}
+        {/* Floating particles - disabled for performance */}
 
-        {/* Animated lines */}
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 0.2 }}
-            transition={{
-              duration: 2,
-              delay: i * 0.3,
-              ease: "easeOut",
-            }}
-            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+        {/* Decorative lines - static */}
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={`line-${i}`}
+            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent"
             style={{
-              top: `${20 + i * 15}%`,
+              top: `${30 + i * 20}%`,
               left: 0,
               right: 0,
             }}
