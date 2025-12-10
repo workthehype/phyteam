@@ -4,6 +4,9 @@ import WhyChooseSection from "./components/WhyChooseSection";
 import StatsSection from "./components/StatsSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import PricingSection from "./components/PricingSection";
+import CTASection from "./components/CTASection";
+import FooterSection from "./components/FooterSection";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -11,36 +14,42 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a1e2e]/80 backdrop-blur-md border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold tracking-wider">
+          <Link
+            href="/"
+            className="text-2xl font-bold tracking-wider hover:opacity-80 transition"
+          >
             Phy<span className="text-cyan-400">team</span>
-          </div>
+          </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-gray-300 hover:text-white transition">
+            <Link href="/" className="text-cyan-400 font-semibold">
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               href="#services"
               className="text-gray-300 hover:text-white transition"
             >
               Services
-            </a>
-            <a href="#" className="text-gray-300 hover:text-white transition">
-              Blog
-            </a>
-            <a href="#" className="text-gray-300 hover:text-white transition">
+            </Link>
+            <Link
+              href="/about"
+              className="text-gray-300 hover:text-white transition"
+            >
               About
-            </a>
+            </Link>
+            <Link
+              href="/contact"
+              className="text-gray-300 hover:text-white transition"
+            >
+              Contact
+            </Link>
           </nav>
           <div className="flex items-center gap-4">
-            {/* <button className="flex items-center gap-2 text-sm">
-              <span className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-xs">
-                🌐
-              </span>
-              EN
-            </button> */}
-            <button className="bg-white text-black px-6 py-2 rounded-full font-medium hover:bg-gray-200 transition">
+            <Link
+              href="/contact"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition"
+            >
               Book a Call
-            </button>
+            </Link>
           </div>
         </div>
       </header>
@@ -63,12 +72,11 @@ export default function Home() {
       {/* Pricing */}
       <PricingSection />
 
+      {/* CTA Section */}
+      <CTASection />
+
       {/* Footer */}
-      <footer className="bg-[#0a1e2e] border-t border-gray-800 py-12 px-6">
-        <div className="max-w-6xl mx-auto text-center text-gray-500 text-sm">
-          <p>© 2025 phyteam. All rights reserved.</p>
-        </div>
-      </footer>
+      <FooterSection />
     </div>
   );
 }
