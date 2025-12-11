@@ -2,6 +2,14 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import {
+  MonitorSmartphone,
+  Code2,
+  BrainCircuit,
+  Smartphone,
+  LineChart,
+  Rocket,
+} from "lucide-react";
 
 const ExpertiseSection = () => {
   const sectionRef = useRef(null);
@@ -13,14 +21,7 @@ const ExpertiseSection = () => {
       title: "Website Development",
       description:
         "Build responsive, high-performance websites with modern frameworks and best practices. From landing pages to complex web applications.",
-      icon: (
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-        />
-      ),
+      icon: <MonitorSmartphone className="w-8 h-8 text-cyan-400" />,
       gradient: "from-cyan-500 to-blue-600",
       glowColor: "cyan",
     },
@@ -28,22 +29,7 @@ const ExpertiseSection = () => {
       title: "Custom Software Development",
       description:
         "Tailored software solutions designed to meet your unique business requirements. Scalable, secure, and built for growth.",
-      icon: (
-        <>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </>
-      ),
+      icon: <Code2 className="w-8 h-8 text-yellow-400" />,
       gradient: "from-yellow-500 to-orange-600",
       glowColor: "yellow",
     },
@@ -51,14 +37,7 @@ const ExpertiseSection = () => {
       title: "Data & AI Consulting",
       description:
         "Harness the power of your data with predictive analytics and machine learning solutions tailored to your industry.",
-      icon: (
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-        />
-      ),
+      icon: <BrainCircuit className="w-8 h-8 text-purple-400" />,
       gradient: "from-purple-500 to-pink-600",
       glowColor: "purple",
     },
@@ -66,14 +45,7 @@ const ExpertiseSection = () => {
       title: "Mobile App Development (iOS & Android)",
       description:
         "Native and cross-platform mobile applications that deliver seamless user experiences on iOS and Android devices.",
-      icon: (
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-        />
-      ),
+      icon: <Smartphone className="w-8 h-8 text-orange-400" />,
       gradient: "from-orange-500 to-red-600",
       glowColor: "orange",
     },
@@ -81,22 +53,7 @@ const ExpertiseSection = () => {
       title: "SEO & Digital Marketing Solutions",
       description:
         "Boost your online visibility with data-driven SEO strategies and comprehensive digital marketing campaigns that drive results.",
-      icon: (
-        <>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </>
-      ),
+      icon: <LineChart className="w-8 h-8 text-yellow-400" />,
       gradient: "from-yellow-500 to-orange-600",
       glowColor: "yellow",
     },
@@ -104,40 +61,10 @@ const ExpertiseSection = () => {
       title: "Digital Strategy",
       description:
         "We develop end-to-end strategies that align your business goals with the right digital transformation.",
-      icon: (
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-        />
-      ),
+      icon: <Rocket className="w-8 h-8 text-indigo-400" />,
       gradient: "from-indigo-500 to-purple-600",
       glowColor: "indigo",
     },
-    // {
-    //   title: "Programm",
-    //   description:
-    //     "Legacy systems are outdated but migrations don't have to be hard. We plan the modernization of your IT stack.",
-    //   icon: (
-    //     <>
-    //       <path
-    //         strokeLinecap="round"
-    //         strokeLinejoin="round"
-    //         strokeWidth={2}
-    //         d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-    //       />
-    //       <path
-    //         strokeLinecap="round"
-    //         strokeLinejoin="round"
-    //         strokeWidth={2}
-    //         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-    //       />
-    //     </>
-    //   ),
-    //   gradient: "from-yellow-500 to-orange-600",
-    //   glowColor: "yellow",
-    // },
   ];
 
   const containerVariants = {
@@ -269,14 +196,7 @@ const ExpertiseSection = () => {
                     transition={{ duration: 0.3 }}
                     className="w-16 h-16 bg-gray-800/50 rounded-2xl flex items-center justify-center mb-6 relative overflow-hidden group-hover:bg-gray-800/70 transition-colors"
                   >
-                    <svg
-                      className="w-8 h-8 text-cyan-400 relative z-10"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      {service.icon}
-                    </svg>
+                    <div className="relative z-10">{service.icon}</div>
                   </motion.div>
 
                   {/* Title */}
@@ -336,9 +256,6 @@ const ExpertiseSection = () => {
           transition={{ delay: 1, duration: 0.8 }}
           className="text-center mt-16"
         >
-          <p className="text-gray-400 mb-6">
-            Can&apos;t find what you&apos;re looking for?
-          </p>
           <motion.button
             whileHover={{
               scale: 1.05,
@@ -348,8 +265,8 @@ const ExpertiseSection = () => {
             whileTap={{ scale: 0.95 }}
             className="border-2 border-gray-700 text-white px-10 py-4 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300 relative overflow-hidden group"
           >
-            <motion.div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <span className="relative z-10">See Free Consultation</span>
+            <motion.div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer" />
+            <span className="relative z-10 ">See Free Consultation</span>
           </motion.button>
         </motion.div>
       </div>
