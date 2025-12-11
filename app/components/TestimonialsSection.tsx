@@ -10,50 +10,50 @@ const TestimonialsSection = () => {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CTO, TechCorp",
+      name: "Rajesh Kumar",
+      role: "CTO, InfoTech Solutions",
       quote:
-        "Phyteam transformed our infrastructure. Their cloud migration was seamless and their team was incredibly responsive throughout the entire process.",
+        "Working with Phyteam has been refreshing. Their innovative approach and modern tech stack delivered exactly what we needed for our digital transformation.",
       gradient: "from-cyan-400 to-blue-500",
       image: "/avatar1.jpg",
     },
     {
-      name: "Michael Chen",
-      role: "VP Engineering",
+      name: "Priya Sharma",
+      role: "VP Engineering, TechnoServe",
       quote:
-        "The AI solutions they implemented have revolutionized our data analytics. We're now making data-driven decisions faster than ever.",
+        "Despite being new, their team showed remarkable expertise and professionalism. The mobile app they built exceeded our expectations.",
       gradient: "from-purple-400 to-pink-500",
       image: "/avatar2.jpg",
     },
     {
-      name: "Emily Rodriguez",
-      role: "CEO, StartupX",
+      name: "Amit Patel",
+      role: "CEO, StartupIndia",
       quote:
-        "Outstanding cybersecurity implementation. They identified vulnerabilities we didn't know existed and secured our entire infrastructure.",
+        "Fresh ideas, modern solutions! Their website development and SEO strategies are already showing promising results in our first quarter.",
       gradient: "from-orange-400 to-red-500",
       image: "/avatar3.jpg",
     },
     {
-      name: "David Park",
-      role: "Director of IT",
+      name: "Sneha Reddy",
+      role: "Director of IT, FinCorp India",
       quote:
-        "The digital workplace solutions have completely transformed how our remote teams collaborate. Productivity is at an all-time high.",
+        "Impressed by their technical capabilities and commitment. The custom software solution is streamlining our operations effectively.",
       gradient: "from-green-400 to-teal-500",
       image: "/avatar4.jpg",
     },
     {
-      name: "Lisa Anderson",
-      role: "COO, FinanceHub",
+      name: "Vikram Singh",
+      role: "COO, RetailHub",
       quote:
-        "Their strategic consulting helped us identify opportunities we never knew existed. The ROI has been phenomenal.",
+        "Their digital marketing approach is data-driven and results-focused. We're already seeing strong engagement from our target audience.",
       gradient: "from-indigo-400 to-purple-500",
       image: "/avatar5.jpg",
     },
     {
-      name: "James Wilson",
-      role: "CTO, DataCorp",
+      name: "Neha Gupta",
+      role: "Founder, EduTech India",
       quote:
-        "From legacy system modernization to cloud migration, they handled everything with expertise and professionalism.",
+        "Excellent communication and understanding of our needs. Phyteam brings a fresh perspective to solving business challenges with technology.",
       gradient: "from-pink-400 to-rose-500",
       image: "/avatar6.jpg",
     },

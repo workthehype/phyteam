@@ -40,7 +40,7 @@ const CTASection = () => {
               </h2>
 
               <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                Let's discuss how HexaCore can help your business scale,
+                Let's discuss how Phyteam can help your business scale,
                 innovate, and succeed.
               </p>
 

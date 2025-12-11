@@ -40,12 +40,12 @@ const FooterSection = () => {
             <h3 className="font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/#services"
+                <a
+                  href="#services"
                   className="text-gray-400 hover:text-cyan-400 transition text-sm"
                 >
                   Service
-                </Link>
+                </a>
               </li>
               <li>
                 <Link
