@@ -55,7 +55,7 @@ const CTASection = () => {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact" prefetch={true}>
+                <Link href="/contact">
                   <motion.button
                     whileHover={hoverScale}
                     whileTap={{ scale: 0.95 }}
@@ -64,7 +64,7 @@ const CTASection = () => {
                     Get Started
                   </motion.button>
                 </Link>
-                <Link href="/contact" prefetch={true}>
+                <Link href="/contact">
                   <motion.button
                     whileHover={hoverScale}
                     whileTap={{ scale: 0.95 }}

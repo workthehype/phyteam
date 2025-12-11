@@ -629,7 +629,6 @@ const AboutPage = () => {
               </p>
               <Link
                 href="/contact"
-                prefetch={true}
                 className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
               >
                 Get In Touch

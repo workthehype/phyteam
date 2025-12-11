@@ -21,11 +21,7 @@ export default function Home() {
             Phy<span className="text-cyan-400">team</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="/"
-              prefetch={true}
-              className="text-cyan-400 font-semibold"
-            >
+            <Link href="/" className="text-cyan-400 font-semibold">
               Home
             </Link>
             <a
@@ -36,14 +32,12 @@ export default function Home() {
             </a>
             <Link
               href="/about"
-              prefetch={true}
               className="text-gray-300 hover:text-white transition"
             >
               About
             </Link>
             <Link
               href="/contact"
-              prefetch={true}
               className="text-gray-300 hover:text-white transition"
             >
               Contact
@@ -52,7 +46,6 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <Link
               href="/contact"
-              prefetch={true}
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition"
             >
               Book a Call
