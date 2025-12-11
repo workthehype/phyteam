@@ -1,6 +1,8 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { fadeUp, staggerContainer, staggerItem } from "../utils/motion";
 
 const HeroSection = () => {
   const { scrollY } = useScroll();
@@ -33,39 +35,33 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-gradient-to-b from-[#0a1e2e] via-[#0d2535] to-[#0a1e2e]">
-      {/* Animated background layers */}
+    <section className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-black">
+      {/* Hero Image Background with Overlay */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large gradient orbs - static for performance */}
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full blur-3xl opacity-20" />
-        <div className="absolute -bottom-40 -right-40 w-[700px] h-[700px] bg-gradient-to-br from-purple-600 to-pink-500 rounded-full blur-3xl opacity-20" />
-
-        {/* Animated grid - static for better performance */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(6, 182, 212, 0.3) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(6, 182, 212, 0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-          }}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90 z-10" />
+        <Image
+          src="/images/hero-team.jpg"
+          alt="Professional team collaboration"
+          fill
+          priority
+          className="object-cover object-center opacity-40"
+          sizes="100vw"
         />
 
-        {/* Floating particles - disabled for performance */}
+        {/* Subtle gradient overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10 z-10" />
 
-        {/* Decorative lines - static */}
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={`line-${i}`}
-            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent"
-            style={{
-              top: `${30 + i * 20}%`,
-              left: 0,
-              right: 0,
-            }}
-          />
-        ))}
+        {/* Minimal grid overlay */}
+        <div
+          className="absolute inset-0 opacity-5 z-10"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(6, 182, 212, 0.5) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(6, 182, 212, 0.5) 1px, transparent 1px)
+            `,
+            backgroundSize: "80px 80px",
+          }}
+        />
       </div>
 
       {/* Content */}
