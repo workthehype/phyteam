@@ -2,6 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import Image from "next/image";
+import { staggerContainer, staggerItem } from "../utils/motion";
 
 const TestimonialsSection = () => {
   const sectionRef = useRef(null);
@@ -15,7 +17,7 @@ const TestimonialsSection = () => {
       quote:
         "Working with Phyteam has been refreshing. Their innovative approach and modern tech stack delivered exactly what we needed for our digital transformation.",
       gradient: "from-cyan-400 to-blue-500",
-      image: "/avatar1.jpg",
+      image: "/images/avatar-1.jpg",
     },
     {
       name: "Priya Sharma",
@@ -23,7 +25,7 @@ const TestimonialsSection = () => {
       quote:
         "Despite being new, their team showed remarkable expertise and professionalism. The mobile app they built exceeded our expectations.",
       gradient: "from-purple-400 to-pink-500",
-      image: "/avatar2.jpg",
+      image: "/images/avatar-2.jpg",
     },
     {
       name: "Amit Patel",
@@ -31,7 +33,7 @@ const TestimonialsSection = () => {
       quote:
         "Fresh ideas, modern solutions! Their website development and SEO strategies are already showing promising results in our first quarter.",
       gradient: "from-orange-400 to-red-500",
-      image: "/avatar3.jpg",
+      image: "/images/avatar-3.jpg",
     },
     {
       name: "Sneha Reddy",
@@ -39,7 +41,7 @@ const TestimonialsSection = () => {
       quote:
         "Impressed by their technical capabilities and commitment. The custom software solution is streamlining our operations effectively.",
       gradient: "from-green-400 to-teal-500",
-      image: "/avatar4.jpg",
+      image: "/images/avatar-4.jpg",
     },
     {
       name: "Vikram Singh",
@@ -47,7 +49,7 @@ const TestimonialsSection = () => {
       quote:
         "Their digital marketing approach is data-driven and results-focused. We're already seeing strong engagement from our target audience.",
       gradient: "from-indigo-400 to-purple-500",
-      image: "/avatar5.jpg",
+      image: "/images/avatar-5.jpg",
     },
     {
       name: "Neha Gupta",
@@ -55,7 +57,7 @@ const TestimonialsSection = () => {
       quote:
         "Excellent communication and understanding of our needs. Phyteam brings a fresh perspective to solving business challenges with technology.",
       gradient: "from-pink-400 to-rose-500",
-      image: "/avatar6.jpg",
+      image: "/images/avatar-6.jpg",
     },
   ];
 
@@ -210,9 +212,15 @@ const TestimonialsSection = () => {
                   <div className="flex items-center gap-4 mb-6 relative">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center text-cyan-400 font-bold text-xl relative overflow-hidden border-2 border-gray-700"
+                      className="w-16 h-16 rounded-full relative overflow-hidden border-2 border-gray-700 shadow-lg"
                     >
-                      {testimonial.name.charAt(0)}
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
                     </motion.div>
                     <div>
                       <h4 className="font-bold text-lg text-white transition-colors">

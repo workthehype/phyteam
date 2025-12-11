@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { staggerContainer, staggerItem, hoverLift } from "../utils/motion";
 
 const ExpertiseSection = () => {
   const sectionRef = useRef(null);

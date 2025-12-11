@@ -3,6 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { fadeUp, hoverScale } from "../utils/motion";
 
 const CTASection = () => {
   const sectionRef = useRef(null);
@@ -11,11 +13,18 @@ const CTASection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-32 px-6 overflow-hidden bg-gradient-to-b from-black via-[#0a1520] to-black"
+      className="relative py-32 px-6 overflow-hidden bg-black"
     >
-      {/* Background effects */}
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black z-10" />
+        <Image
+          src="/images/workspace.jpg"
+          alt="Modern workspace"
+          fill
+          className="object-cover object-center opacity-20"
+          sizes="100vw"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -23,14 +32,15 @@ const CTASection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-teal-500/10 backdrop-blur-sm border border-cyan-400/20 rounded-3xl overflow-hidden"
+          className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
         >
           <div className="grid lg:grid-cols-2 gap-12 items-center p-8 md:p-12 lg:p-16">
             {/* Left Content */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              {...fadeUp}
+              initial="initial"
+              animate={isInView ? "animate" : "initial"}
+              transition={{ delay: 0.2 }}
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 <span className="text-white">Ready to Start Your </span>
@@ -40,25 +50,25 @@ const CTASection = () => {
               </h2>
 
               <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                Let's discuss how Phyteam can help your business scale,
-                innovate, and succeed.
+                Let&apos;s discuss how Phyteam can help your business scale,
+                innovate, and succeed with modern technology solutions.
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact">
+                <Link href="/contact" prefetch={true}>
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={hoverScale}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50"
+                    className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/30"
                   >
                     Get Started
                   </motion.button>
                 </Link>
-                <Link href="/contact">
+                <Link href="/contact" prefetch={true}>
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={hoverScale}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white/10 backdrop-blur-sm border border-cyan-400/30 hover:border-cyan-400 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/20"
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-400/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/20"
                   >
                     Book a Call
                   </motion.button>
@@ -66,10 +76,10 @@ const CTASection = () => {
               </div>
             </motion.div>
 
-            {/* Right Illustration - Network Diagram */}
+            {/* Right Image Showcase */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative h-[400px] flex items-center justify-center"
             >
