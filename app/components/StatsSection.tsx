@@ -145,21 +145,21 @@ const StatsSection = () => {
         {/* Stats Grid */}
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
           <StatCard
-            number={350}
+            number={50}
             suffix="+"
             label="satisfied clients"
             delay={0.3}
             isInView={isInView}
           />
           <StatCard
-            number={90}
+            number={95}
             suffix="%"
-            label="client retention rate"
+            label="project success rate"
             delay={0.5}
             isInView={isInView}
           />
           <StatCard
-            number={4.97}
+            number={4.9}
             suffix=""
             label="average rating"
             delay={0.7}

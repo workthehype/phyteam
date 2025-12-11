@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
+import FooterSection from "../components/FooterSection";
 
 const ContactPage = () => {
   const heroRef = useRef(null);
@@ -97,6 +98,7 @@ const ContactPage = () => {
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/"
+              prefetch={true}
               className="text-gray-300 hover:text-white transition"
             >
               Home
@@ -109,16 +111,22 @@ const ContactPage = () => {
             </Link>
             <Link
               href="/about"
+              prefetch={true}
               className="text-gray-300 hover:text-white transition"
             >
               About
             </Link>
-            <Link href="/contact" className="text-cyan-400 font-semibold">
+            <Link
+              href="/contact"
+              prefetch={true}
+              className="text-cyan-400 font-semibold"
+            >
               Contact
             </Link>
           </nav>
           <Link
             href="/contact"
+            prefetch={true}
             className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition"
           >
             Get Started
@@ -453,6 +461,9 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <FooterSection />
     </div>
   );
 };

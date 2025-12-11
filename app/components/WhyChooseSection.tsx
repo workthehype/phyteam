@@ -84,6 +84,15 @@ const WhyChooseSection = () => {
       mockup: "/mockup5.png",
       delay: 0.6,
     },
+    {
+      title: "Proven Track Record",
+      description:
+        "200+ successful projects delivered across diverse industries with a 4.97 client satisfaction rating.",
+      gradient: "from-orange-600/20 to-red-600/20",
+      icon: "⭐",
+      mockup: "/mockup6.png",
+      delay: 0.75,
+    },
   ];
 
   return (
