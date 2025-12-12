@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import Image from "next/image";
 
 const TestimonialsSection = () => {
   const [active, setActive] = useState(0);
@@ -62,7 +61,7 @@ const TestimonialsSection = () => {
       image:
         "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&auto=format&fit=crop&q=80",
     },
-
+    
     {
       name: "Kavya Iyer",
       role: "Head of Product, HealthTech Plus",
@@ -220,13 +219,14 @@ const TestimonialsSection = () => {
               <div className="relative bg-gradient-to-br from-[#1a2332]/95 to-[#0f1820]/95 backdrop-blur-xl border border-gray-800/50 rounded-3xl overflow-hidden">
                 {/* Image */}
                 <div className="relative h-[400px] lg:h-[500px] overflow-hidden">
-                  <Image
+                  <motion.img
+                    key={testimonials[active].image}
+                    initial={{ scale: 1.2, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6 }}
                     src={testimonials[active].image}
                     alt={testimonials[active].name}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                    suppressHydrationWarning
+                    className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0f1820] via-transparent to-transparent" />
                 </div>
@@ -317,17 +317,14 @@ const TestimonialsSection = () => {
                   {/* Small Card */}
                   <div className="relative bg-gradient-to-br from-[#1a2332]/90 to-[#0f1820]/90 backdrop-blur-xl border border-gray-800/50 rounded-2xl p-5 flex gap-4 items-start">
                     {/* Small Image */}
-                    <div className="relative flex-shrink-0 w-16 h-16">
+                    <div className="relative flex-shrink-0">
                       <div
                         className={`absolute -inset-1 bg-gradient-to-r ${testimonial.gradient} rounded-full blur opacity-50`}
                       />
-                      <Image
+                      <img
                         src={testimonial.image}
                         alt={testimonial.name}
-                        width={64}
-                        height={64}
-                        className="relative rounded-full object-cover border-2 border-gray-700"
-                        unoptimized
+                        className="relative w-16 h-16 rounded-full object-cover border-2 border-gray-700"
                       />
                     </div>
 

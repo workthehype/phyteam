@@ -213,37 +213,6 @@ const HeroSection = () => {
         />
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 3, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 cursor-pointer group"
-        >
-          <span className="text-gray-400 text-xs uppercase tracking-wider group-hover:text-cyan-400 transition-colors">
-            Scroll
-          </span>
-          <motion.svg
-            className="w-6 h-6 text-cyan-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </motion.svg>
-        </motion.div>
-      </motion.div>
-
       {/* Add gradient animation keyframes to globals.css */}
       <style jsx global>{`
         @keyframes gradient {
