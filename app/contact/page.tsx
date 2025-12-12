@@ -10,9 +10,9 @@ const ContactPage = () => {
   const formRef = useRef(null);
   const infoRef = useRef(null);
 
-  const isHeroInView = useInView(heroRef, { once: true, amount: 0.3 });
-  const isFormInView = useInView(formRef, { once: true, amount: 0.2 });
-  const isInfoInView = useInView(infoRef, { once: true, amount: 0.3 });
+  const isHeroInView = useInView(heroRef, { once: true, amount: 0.15 });
+  const isFormInView = useInView(formRef, { once: true, amount: 0.1 });
+  const isInfoInView = useInView(infoRef, { once: true, amount: 0.15 });
 
   const [formData, setFormData] = useState({
     name: "",
@@ -185,7 +185,7 @@ const ContactPage = () => {
                         focusedField === "name"
                           ? "border-cyan-400"
                           : "border-gray-700"
-                      } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500`}
+                      } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500 cursor-text`}
                       placeholder="John Doe"
                     />
                   </div>
@@ -208,7 +208,7 @@ const ContactPage = () => {
                           focusedField === "email"
                             ? "border-cyan-400"
                             : "border-gray-700"
-                        } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500`}
+                        } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500 cursor-text`}
                         placeholder="john@example.com"
                       />
                     </div>
@@ -227,7 +227,7 @@ const ContactPage = () => {
                           focusedField === "phone"
                             ? "border-cyan-400"
                             : "border-gray-700"
-                        } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500`}
+                        } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500 cursor-text`}
                         placeholder="+1 (555) 000-0000"
                       />
                     </div>
@@ -249,7 +249,7 @@ const ContactPage = () => {
                         focusedField === "company"
                           ? "border-cyan-400"
                           : "border-gray-700"
-                      } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500`}
+                      } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500 cursor-text`}
                       placeholder="Your Company"
                     />
                   </div>
@@ -270,7 +270,7 @@ const ContactPage = () => {
                         focusedField === "service"
                           ? "border-cyan-400"
                           : "border-gray-700"
-                      } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white`}
+                      } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white cursor-pointer`}
                     >
                       <option value="">Select a service</option>
                       {services.map((service, index) => (
@@ -298,7 +298,7 @@ const ContactPage = () => {
                         focusedField === "message"
                           ? "border-cyan-400"
                           : "border-gray-700"
-                      } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 text-white placeholder-gray-500 resize-none`}
+                      } rounded-xl focus:outline-none focus:border-cyan-400 transition-all duration-300 resize-none text-white placeholder-gray-500 cursor-text`}
                       placeholder="Tell us about your project..."
                     />
                   </div>
@@ -343,7 +343,7 @@ const ContactPage = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInfoInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="block group"
+                    className="block group cursor-pointer"
                   >
                     <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-cyan-400/50 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
                       <div
@@ -379,7 +379,7 @@ const ContactPage = () => {
                         href="#"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 hover:from-cyan-500 hover:to-blue-600 border border-cyan-400/30 hover:border-cyan-400 rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50"
+                        className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 hover:from-cyan-500 hover:to-blue-600 border border-cyan-400/30 hover:border-cyan-400 rounded-xl flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 cursor-pointer"
                       >
                         <span className="text-xs font-semibold text-cyan-400 hover:text-white transition-colors duration-300">
                           {social[0]}
@@ -404,12 +404,20 @@ const ContactPage = () => {
             transition={{ duration: 0.6 }}
             className="bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-4 overflow-hidden"
           >
-            <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10" />
-              <div className="text-center relative z-10">
-                <div className="text-6xl mb-4">🗺️</div>
-                <p className="text-gray-400 text-lg">
-                  Interactive map coming soon
+            <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.3825624426!2d78.03231355!3d27.8973944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3974a2d06e3c9957%3A0x6cda968c7c8bbb5d!2sAligarh%2C%20Uttar%20Pradesh%2C%20India!5e0!3m2!1sen!2sus!4v1639000000000!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="rounded-2xl"
+              />
+              <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-xl border border-cyan-400/30">
+                <p className="text-cyan-400 font-semibold flex items-center gap-2">
+                  <span>📍</span> Aligarh, U.P. India
                 </p>
               </div>
             </div>

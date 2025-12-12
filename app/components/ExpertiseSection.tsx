@@ -1,12 +1,12 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, memo } from "react";
 import { staggerContainer, staggerItem, hoverLift } from "../utils/motion";
 
 const ExpertiseSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const services = [
@@ -358,4 +358,4 @@ const ExpertiseSection = () => {
   );
 };
 
-export default ExpertiseSection;
+export default memo(ExpertiseSection);

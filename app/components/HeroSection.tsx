@@ -1,39 +1,10 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { fadeUp, staggerContainer, staggerItem } from "../utils/motion";
+import Link from "next/link";
+import { memo } from "react";
 
 const HeroSection = () => {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 500], [0, 150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-
-  // Page load animations
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-  };
-
   return (
     <section className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-black">
       {/* Hero Image Background with Overlay */}
@@ -65,172 +36,87 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ y, opacity }}
-        className="max-w-6xl mx-auto relative z-10 text-center"
-      >
-        {/* Main heading with typing effect and gradient animation */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="inline-block"
-            >
+      <div className="max-w-6xl mx-auto relative z-10 text-center">
+        {/* Main heading */}
+        <div className="mb-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <span className="inline-block animate-fade-in stagger-1">
               Transform Your Business
-            </motion.span>
-            <br />
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="inline-block"
-            >
-              with {"  "}
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.8,
-                delay: 1.1,
-                type: "spring",
-                stiffness: 100,
-              }}
-              className="inline-block relative"
-            >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 animate-gradient">
-                Future-Ready
-              </span>
-              <motion.div
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 1, -1, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute -inset-2 bg-gradient-to-r from-cyan-400/20 via-blue-500/20 to-purple-500/20 blur-2xl -z-10"
-              />
-            </motion.span>{" "}
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.3 }}
-              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300"
-            >
-              Technology
-            </motion.span>
-          </motion.h1>
-        </motion.div>
-
-        {/* Subtitle with fade-in */}
-        <motion.p
-          variants={itemVariants}
-          className="text-gray-300 text-lg md:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed"
-        >
-          From strategy to execution, we&apos;re your partners in digital
-          transformation.
-        </motion.p>
-
-        {/* CTA Buttons with hover effects */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20"
-        >
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 30px rgba(6, 182, 212, 0.5)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="relative group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-lg cursor-pointer"
-          >
-            <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10 flex items-center gap-2">
-              Get Started
-              <motion.svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </motion.svg>
             </span>
-          </motion.button>
+            <br />
+            <span className="inline-block animate-fade-in stagger-3">
+              with{" "}
+            </span>
+            <span className="inline-block relative animate-scale-in stagger-4 ml-2">
+              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-transparent bg-clip-text">
+                Cutting-Edge Technology
+              </span>
+              {/* Animated underline */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full animate-expand stagger-5" />
+            </span>
+          </h1>
 
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-              backgroundColor: "rgba(255, 255, 255, 0.95)",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="relative group bg-white text-black px-10 py-4 rounded-full font-semibold text-lg border-2 border-white/20 hover:border-cyan-400/50 transition-all shadow-lg backdrop-blur-sm"
-          >
-            <span className="relative z-10">Book a Call</span>
-          </motion.button>
-        </motion.div>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in stagger-6">
+            We empower businesses with custom software development, Mobile Application development, data analytics,
+            AI integration, and cloud solutions to drive growth,
+            efficiency, and lasting impact.
+          </p>
+        </div>
 
-        {/* Floating decorative elements */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, -5, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-20 right-10 w-20 h-20 border-2 border-cyan-400/30 rounded-2xl backdrop-blur-sm hidden lg:block"
-        />
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -5, 5, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-20 left-10 w-16 h-16 border-2 border-purple-400/30 rounded-full backdrop-blur-sm hidden lg:block"
-        />
-      </motion.div>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20 animate-slide-up stagger-7">
+          <Link href="#services">
+            <button className="relative group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50 active:scale-95">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10 flex items-center gap-2">
+                Get Started
+                <svg
+                  className="w-5 h-5 animate-arrow"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </span>
+            </button>
+          </Link>
 
-      {/* Add gradient animation keyframes to globals.css */}
-      <style jsx global>{`
-        @keyframes gradient {
-          0%,
-          100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
-        }
-      `}</style>
+          <Link href="/about">
+            <button className="relative group border-2 border-white/30 text-white px-10 py-4 rounded-full font-semibold text-lg overflow-hidden backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900 active:scale-95 cursor-pointer">
+              <span className="relative z-10">Learn More</span>
+            </button>
+          </Link>
+        </div>
+
+        {/* Stats Section */}
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          {[
+            { value: "100+", label: "Projects Delivered" },
+            { value: "99%", label: "Client Satisfaction" },
+            { value: "50+", label: "Expert Team" },
+            { value: "24/7", label: "Support" },
+          ].map((stat, idx) => (
+            <div
+              key={idx}
+              className="p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover-lift cursor-default animate-fade-in"
+              style={{ animationDelay: `${0.9 + idx * 0.1}s` }}
+            >
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text mb-2">
+                {stat.value}
+              </div>
+              <div className="text-gray-400 text-sm">{stat.label}</div>
+            </div>
+          ))}
+        </div> */}
+      </div>
     </section>
   );
 };
 
-export default HeroSection;
+export default memo(HeroSection);

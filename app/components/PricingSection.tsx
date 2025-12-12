@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, memo } from "react";
 import Link from "next/link";
 
 const PricingSection = () => {
@@ -19,7 +19,7 @@ const PricingSection = () => {
         "Responsive Website (5-8 pages)",
         "Basic SEO Setup",
         "Mobile App (Single Platform)",
-        "3 Months Free Maintenance",
+        "1 Months Free Maintenance",
         "Social Media Integration",
       ],
       buttonText: "Get Started",
@@ -37,7 +37,7 @@ const PricingSection = () => {
         "iOS & Android Mobile App",
         "Complete SEO & Digital Marketing",
         "Data Analytics & AI Integration",
-        "6 Months Free Support",
+        "3 Months Free Support",
         "Priority Customer Service",
       ],
       buttonText: "Most Popular",
@@ -57,7 +57,7 @@ const PricingSection = () => {
         "AI & Machine Learning Solutions",
         "Complete Digital Marketing Campaign",
         "Dedicated Account Manager",
-        "12 Months Premium Support",
+        "Upto 12 Months Premium Support",
         "Scalable Cloud Infrastructure",
       ],
       buttonText: "Contact Sales",
@@ -310,14 +310,16 @@ const PricingSection = () => {
                   </ul>
 
                   {/* CTA Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-full ${plan.buttonStyle} px-6 py-4 rounded-full font-semibold text-sm transition-all duration-300 relative overflow-hidden group/btn`}
-                  >
-                    <motion.div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover/btn:opacity-20 transition-opacity" />
-                    <span className="relative z-10">{plan.buttonText}</span>
-                  </motion.button>
+                  <Link href="/contact">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`w-full ${plan.buttonStyle} px-6 py-4 rounded-full font-semibold text-sm transition-all duration-300 relative overflow-hidden group/btn cursor-pointer`}
+                    >
+                      <motion.div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 group-hover/btn:opacity-20 transition-opacity" />
+                      <span className="relative z-10">{plan.buttonText}</span>
+                    </motion.button>
+                  </Link>
                 </div>
 
                 {/* Decorative corner elements */}
@@ -375,4 +377,4 @@ const PricingSection = () => {
   );
 };
 
-export default PricingSection;
+export default memo(PricingSection);

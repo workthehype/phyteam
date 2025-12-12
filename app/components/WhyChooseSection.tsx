@@ -2,19 +2,19 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 
 const WhyChooseSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
       },
     },
   };
@@ -22,18 +22,14 @@ const WhyChooseSection = () => {
   const cardVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.9,
+      y: 30,
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-        duration: 0.6,
+        duration: 0.4,
+        ease: "easeOut",
       },
     },
   };
@@ -244,4 +240,4 @@ const WhyChooseSection = () => {
   );
 };
 
-export default WhyChooseSection;
+export default memo(WhyChooseSection);

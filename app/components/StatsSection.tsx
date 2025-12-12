@@ -1,11 +1,11 @@
 "use client";
 
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 
 const StatsSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   return (
     <section
@@ -152,7 +152,7 @@ const StatsSection = () => {
             isInView={isInView}
           />
           <StatCard
-            number={95}
+            number={99}
             suffix="%"
             label="project success rate"
             delay={0.5}
@@ -336,4 +336,4 @@ const StatCard = ({
   );
 };
 
-export default StatsSection;
+export default memo(StatsSection);

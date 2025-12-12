@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useCallback, memo } from "react";
+import Image from "next/image";
 
 const TestimonialsSection = () => {
   const [active, setActive] = useState(0);
@@ -109,13 +110,13 @@ const TestimonialsSection = () => {
     },
   ];
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setActive((prev) => (prev + 1) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
   const getVisibleTestimonials = () => {
     const visible = [];
@@ -463,4 +464,4 @@ const TestimonialsSection = () => {
   );
 };
 
-export default TestimonialsSection;
+export default memo(TestimonialsSection);
