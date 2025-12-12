@@ -152,7 +152,7 @@ const StatsSection = () => {
             isInView={isInView}
           />
           <StatCard
-            number={95}
+            number={99}
             suffix="%"
             label="project success rate"
             delay={0.5}
