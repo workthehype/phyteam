@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Header from "../components/Header";
 import FooterSection from "../components/FooterSection";
@@ -17,10 +17,34 @@ import {
   Zap,
   Shield,
   Headphones,
+  X,
 } from "lucide-react";
 
 export default function ServicesPage() {
   const [activeService, setActiveService] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
+
+  const openModal = (serviceId: number) => {
+    setActiveService(serviceId);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setActiveService(null), 300); // Wait for animation to complete
+  };
 
   const services = [
     {
@@ -352,17 +376,13 @@ export default function ServicesPage() {
       <section className="relative py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
+            {services.map((service) => {
               const Icon = service.icon;
               return (
                 <div
                   key={service.id}
                   className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 cursor-pointer"
-                  onClick={() =>
-                    setActiveService(
-                      activeService === service.id ? null : service.id
-                    )
-                  }
+                  onClick={() => openModal(service.id)}
                 >
                   {/* Icon */}
                   <div
@@ -379,22 +399,6 @@ export default function ServicesPage() {
                     {service.description}
                   </p>
 
-                  {/* Features List */}
-                  <div
-                    className={`space-y-3 mb-6 transition-all duration-300 ${
-                      activeService === service.id
-                        ? "max-h-96 opacity-100"
-                        : "max-h-0 opacity-0 overflow-hidden"
-                    }`}
-                  >
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-300 text-sm">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {service.technologies.map((tech, idx) => (
@@ -407,36 +411,134 @@ export default function ServicesPage() {
                     ))}
                   </div>
 
-                  {/* CTA Button */}
-                  <div
-                    className={`transition-all duration-300 ${
-                      activeService === service.id
-                        ? "opacity-100"
-                        : "opacity-0 max-h-0 overflow-hidden"
-                    }`}
-                  >
-                    <Link
-                      href="/contact"
-                      className={`inline-flex items-center gap-2 bg-gradient-to-r ${service.gradient} text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 w-full justify-center`}
-                    >
-                      Get Started
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                  {/* View Details Indicator */}
+                  <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
+                    <span>View Details</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
-
-                  {/* Expand Indicator */}
-                  {activeService !== service.id && (
-                    <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
-                      <span>View Details</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  )}
                 </div>
               );
             })}
           </div>
         </div>
       </section>
+
+      {/* Service Details Modal */}
+      {isModalOpen && activeService !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn"
+          onClick={closeModal}
+        >
+          <div
+            className="relative bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-slideUp"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {(() => {
+              const service = services.find((s) => s.id === activeService);
+              if (!service) return null;
+              const Icon = service.icon;
+
+              return (
+                <>
+                  {/* Close Button */}
+                  <button
+                    onClick={closeModal}
+                    className="absolute top-6 right-6 w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+                  >
+                    <X className="w-5 h-5 text-gray-400" />
+                  </button>
+
+                  {/* Gradient Background Overlay */}
+                  <div
+                    className={`absolute top-0 left-0 right-0 h-64 bg-gradient-to-br ${service.gradient} opacity-10 rounded-t-3xl`}
+                  />
+
+                  {/* Content */}
+                  <div className="relative p-8 md:p-12">
+                    {/* Icon & Title */}
+                    <div className="flex items-start gap-6 mb-8">
+                      <div
+                        className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}
+                      >
+                        <Icon className="w-10 h-10 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h2 className="text-4xl font-black text-white mb-3">
+                          {service.title}
+                        </h2>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Features Section */}
+                    <div className="mb-8">
+                      <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                        <div
+                          className={`w-1 h-8 bg-gradient-to-b ${service.gradient} rounded-full`}
+                        />
+                        Key Features
+                      </h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {service.features.map((feature, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 transition-colors duration-300"
+                            style={{
+                              animationDelay: `${idx * 50}ms`,
+                              animation: "slideUp 0.4s ease-out forwards",
+                            }}
+                          >
+                            <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                            <span className="text-gray-300 text-sm font-medium">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Technologies Section */}
+                    <div className="mb-8">
+                      <h3 className="text-xl font-bold text-white mb-4">
+                        Technologies We Use
+                      </h3>
+                      <div className="flex flex-wrap gap-3">
+                        {service.technologies.map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className={`px-5 py-2.5 bg-gradient-to-r ${service.gradient} bg-opacity-10 border border-slate-600 rounded-full text-sm text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-300`}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CTA Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-slate-700">
+                      <Link
+                        href="/contact"
+                        className={`flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r ${service.gradient} text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105`}
+                      >
+                        Get Started
+                        <ArrowRight className="w-5 h-5" />
+                      </Link>
+                      <button
+                        onClick={closeModal}
+                        className="px-8 py-4 rounded-xl font-bold border-2 border-slate-600 hover:border-cyan-500/50 bg-slate-800/50 transition-all duration-300 hover:scale-105"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+        </div>
+      )}
 
       {/* Why Choose Us Section */}
       <section className="relative py-20 px-6 bg-slate-900/50">
