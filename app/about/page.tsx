@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import Header from "../components/Header";
 import FooterSection from "../components/FooterSection";
 import { fadeUp, scaleIn, slideIn, hoverLift } from "../utils/motion";
 
@@ -110,52 +111,7 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0a1e2e] via-black to-[#0a1e2e] text-white">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a1e2e]/80 backdrop-blur-md border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="text-2xl font-bold tracking-wider hover:opacity-80 transition"
-          >
-            Phy<span className="text-cyan-400">team</span>
-          </Link>
-          <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="/"
-              prefetch={true}
-              className="text-gray-300 hover:text-white transition"
-            >
-              Home
-            </Link>
-            <Link
-              href="/#services"
-              className="text-gray-300 hover:text-white transition"
-            >
-              Services
-            </Link>
-            <Link
-              href="/about"
-              prefetch={true}
-              className="text-cyan-400 font-semibold"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              prefetch={true}
-              className="text-gray-300 hover:text-white transition"
-            >
-              Contact
-            </Link>
-          </nav>
-          <Link
-            href="/contact"
-            prefetch={true}
-            className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition"
-          >
-            Get Started
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section
@@ -183,7 +139,7 @@ const AboutPage = () => {
             animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <motion.div
+            {/* <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={isHeroInView ? { scale: 1, rotate: 0 } : {}}
               transition={{ duration: 0.8, type: "spring" }}
@@ -192,7 +148,7 @@ const AboutPage = () => {
               <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center text-3xl font-bold shadow-lg shadow-cyan-500/50">
                 PT
               </div>
-            </motion.div>
+            </motion.div> */}
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
