@@ -364,7 +364,7 @@ const PricingSection = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-cyan-500/50 text-cyan-400 px-8 py-3 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300"
+              className="border-2 border-cyan-500/50 text-cyan-400 px-8 py-3 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300 cursor-pointer"
             >
               Contact Sales
             </motion.button>

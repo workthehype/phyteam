@@ -347,7 +347,7 @@ const ExpertiseSection = () => {
               boxShadow: "0 0 20px rgba(6, 182, 212, 0.3)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="border-2 border-gray-700 text-white px-10 py-4 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300 relative overflow-hidden group"
+            className="border-2 border-gray-700 text-white px-10 py-4 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300 relative overflow-hidden group cursor-pointer"
           >
             <motion.div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
             <span className="relative z-10">See Free Consultation</span>

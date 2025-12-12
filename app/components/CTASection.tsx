@@ -63,7 +63,7 @@ const CTASection = ({ onBookCallClick }: CTASectionProps) => {
                   <motion.button
                     whileHover={hoverScale}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/30"
+                    className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/30 cursor-pointer"
                   >
                     Get Started
                   </motion.button>
@@ -72,7 +72,7 @@ const CTASection = ({ onBookCallClick }: CTASectionProps) => {
                   onClick={onBookCallClick}
                   whileHover={hoverScale}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-400/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/20"
+                  className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-400/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/20 cursor-pointer"
                 >
                   Book a Call
                 </motion.button>

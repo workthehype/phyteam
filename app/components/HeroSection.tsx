@@ -150,7 +150,7 @@ const HeroSection = () => {
               boxShadow: "0 0 30px rgba(6, 182, 212, 0.5)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="relative group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-lg"
+            className="relative group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-lg cursor-pointer"
           >
             <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 flex items-center gap-2">

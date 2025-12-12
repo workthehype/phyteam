@@ -81,7 +81,7 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
                 {/* Close button */}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-gray-400 hover:text-white transition-all duration-300"
+                  className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-gray-400 hover:text-white transition-all duration-300 cursor-pointer"
                 >
                   <svg
                     className="w-5 h-5"
@@ -260,7 +260,7 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
                       type="submit"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/30"
+                      className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-lg shadow-cyan-500/30 cursor-pointer"
                     >
                       Schedule Call
                     </motion.button>

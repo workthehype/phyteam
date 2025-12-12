@@ -391,7 +391,7 @@ const TestimonialsSection = () => {
             >
               <button
                 onClick={handlePrev}
-                className="group w-12 h-12 rounded-full bg-cyan-500/20 border border-cyan-400/30 backdrop-blur-sm flex items-center justify-center text-cyan-400 hover:bg-cyan-500/30 transition-all duration-300 hover:scale-110"
+                className="group w-12 h-12 rounded-full bg-cyan-500/20 border border-cyan-400/30 backdrop-blur-sm flex items-center justify-center text-cyan-400 hover:bg-cyan-500/30 transition-all duration-300 hover:scale-110 cursor-pointer"
               >
                 <svg
                   className="w-6 h-6 transition-transform group-hover:-translate-x-0.5"
@@ -410,7 +410,7 @@ const TestimonialsSection = () => {
 
               <button
                 onClick={handleNext}
-                className="group w-12 h-12 rounded-full bg-cyan-500/20 border border-cyan-400/30 backdrop-blur-sm flex items-center justify-center text-cyan-400 hover:bg-cyan-500/30 transition-all duration-300 hover:scale-110"
+                className="group w-12 h-12 rounded-full bg-cyan-500/20 border border-cyan-400/30 backdrop-blur-sm flex items-center justify-center text-cyan-400 hover:bg-cyan-500/30 transition-all duration-300 hover:scale-110 cursor-pointer"
               >
                 <svg
                   className="w-6 h-6 transition-transform group-hover:translate-x-0.5"
@@ -443,7 +443,7 @@ const TestimonialsSection = () => {
               onClick={() => setActive(index)}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 index === active
                   ? "bg-cyan-400 w-12"
                   : "bg-gray-600 w-2 hover:bg-gray-500"

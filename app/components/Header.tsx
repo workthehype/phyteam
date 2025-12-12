@@ -30,7 +30,7 @@ export default function Header({ onBookCallClick }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between transition-all">
         <Link
           href="/"
-          className="text-2xl font-bold tracking-wider hover:opacity-80 transition text-white"
+          className="text-2xl font-bold tracking-wider hover:opacity-80 transition text-white cursor-pointer"
         >
           Phy<span className="text-cyan-400">team</span>
         </Link>
@@ -39,13 +39,13 @@ export default function Header({ onBookCallClick }: HeaderProps) {
             href="/"
             className={`${
               pathname === "/" ? "text-cyan-400 font-semibold" : "text-gray-300"
-            } hover:text-white transition`}
+            } hover:text-white transition cursor-pointer`}
           >
             Home
           </Link>
           <a
             href="/#services"
-            className="text-gray-300 hover:text-white transition"
+            className="text-gray-300 hover:text-white transition cursor-pointer"
           >
             Services
           </a>
@@ -55,7 +55,7 @@ export default function Header({ onBookCallClick }: HeaderProps) {
               pathname === "/about"
                 ? "text-cyan-400 font-semibold"
                 : "text-gray-300"
-            } hover:text-white transition`}
+            } hover:text-white transition cursor-pointer`}
           >
             About
           </Link>
@@ -65,7 +65,7 @@ export default function Header({ onBookCallClick }: HeaderProps) {
               pathname === "/contact"
                 ? "text-cyan-400 font-semibold"
                 : "text-gray-300"
-            } hover:text-white transition`}
+            } hover:text-white transition cursor-pointer`}
           >
             Contact
           </Link>
@@ -74,14 +74,14 @@ export default function Header({ onBookCallClick }: HeaderProps) {
           {onBookCallClick ? (
             <button
               onClick={onBookCallClick}
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition cursor-pointer"
             >
               Book a Call
             </button>
           ) : (
             <Link
               href="/contact"
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition"
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-2 rounded-full font-medium transition cursor-pointer"
             >
               Get Started
             </Link>
