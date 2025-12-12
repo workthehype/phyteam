@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { memo } from "react";
 import { useState } from "react";
 import { fadeUp, scaleIn } from "../utils/motion";
 
@@ -130,7 +131,7 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
                             focusedField === "name"
                               ? "border-cyan-400"
                               : "border-gray-700"
-                          } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300`}
+                          } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300 cursor-text`}
                           placeholder="John Doe"
                         />
                       </div>
@@ -152,7 +153,7 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
                             focusedField === "email"
                               ? "border-cyan-400"
                               : "border-gray-700"
-                          } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300`}
+                          } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300 cursor-text`}
                           placeholder="john@example.com"
                         />
                       </div>
@@ -174,7 +175,7 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
                             focusedField === "phone"
                               ? "border-cyan-400"
                               : "border-gray-700"
-                          } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300`}
+                          } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300 cursor-text`}
                           placeholder="+91 98765 43210"
                         />
                       </div>
@@ -195,7 +196,7 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
                             focusedField === "company"
                               ? "border-cyan-400"
                               : "border-gray-700"
-                          } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300`}
+                          } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300 cursor-text`}
                           placeholder="Your Company"
                         />
                       </div>
@@ -216,7 +217,7 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
                             focusedField === "service"
                               ? "border-cyan-400"
                               : "border-gray-700"
-                          } rounded-xl text-white focus:outline-none transition-all duration-300`}
+                          } rounded-xl text-white focus:outline-none transition-all duration-300 cursor-pointer`}
                         >
                           <option value="" className="bg-gray-900">
                             Select a service
@@ -250,7 +251,7 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
                           focusedField === "message"
                             ? "border-cyan-400"
                             : "border-gray-700"
-                        } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300 resize-none`}
+                        } rounded-xl text-white placeholder-gray-500 focus:outline-none transition-all duration-300 resize-none cursor-text`}
                         placeholder="Tell us about your project..."
                       />
                     </div>
@@ -275,4 +276,4 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
   );
 };
 
-export default BookCallModal;
+export default memo(BookCallModal);

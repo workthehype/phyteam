@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { fadeUp, hoverScale } from "../utils/motion";
@@ -12,7 +12,7 @@ interface CTASectionProps {
 
 const CTASection = ({ onBookCallClick }: CTASectionProps) => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   return (
     <section
@@ -245,4 +245,4 @@ const CTASection = ({ onBookCallClick }: CTASectionProps) => {
   );
 };
 
-export default CTASection;
+export default memo(CTASection);

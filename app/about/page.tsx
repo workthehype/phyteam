@@ -15,14 +15,14 @@ const AboutPage = () => {
   const approachRef = useRef(null);
   const achievementsRef = useRef(null);
 
-  const isHeroInView = useInView(heroRef, { once: true, amount: 0.3 });
-  const isStoryInView = useInView(storyRef, { once: true, amount: 0.3 });
-  const isMissionInView = useInView(missionRef, { once: true, amount: 0.3 });
-  const isValuesInView = useInView(valuesRef, { once: true, amount: 0.2 });
-  const isApproachInView = useInView(approachRef, { once: true, amount: 0.2 });
+  const isHeroInView = useInView(heroRef, { once: true, amount: 0.15 });
+  const isStoryInView = useInView(storyRef, { once: true, amount: 0.15 });
+  const isMissionInView = useInView(missionRef, { once: true, amount: 0.15 });
+  const isValuesInView = useInView(valuesRef, { once: true, amount: 0.1 });
+  const isApproachInView = useInView(approachRef, { once: true, amount: 0.1 });
   const isAchievementsInView = useInView(achievementsRef, {
     once: true,
-    amount: 0.2,
+    amount: 0.1,
   });
 
   const containerVariants = {
@@ -30,7 +30,8 @@ const AboutPage = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.08,
+        delayChildren: 0.05,
       },
     },
   };

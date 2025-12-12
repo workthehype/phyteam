@@ -1,30 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import ExpertiseSection from "./components/ExpertiseSection";
-import WhyChooseSection from "./components/WhyChooseSection";
-import StatsSection from "./components/StatsSection";
-import TestimonialsSection from "./components/TestimonialsSection";
-import PricingSection from "./components/PricingSection";
-import CTASection from "./components/CTASection";
-import FooterSection from "./components/FooterSection";
-import BookCallModal from "./components/BookCallModal";
+
+// Lazy load heavy components
+const ExpertiseSection = dynamic(
+  () => import("./components/ExpertiseSection"),
+  { ssr: true }
+);
+const WhyChooseSection = dynamic(
+  () => import("./components/WhyChooseSection"),
+  { ssr: true }
+);
+const StatsSection = dynamic(() => import("./components/StatsSection"), {
+  ssr: true,
+});
+const TestimonialsSection = dynamic(
+  () => import("./components/TestimonialsSection"),
+  { ssr: true }
+);
+const PricingSection = dynamic(() => import("./components/PricingSection"), {
+  ssr: true,
+});
+const CTASection = dynamic(() => import("./components/CTASection"), {
+  ssr: true,
+});
+const FooterSection = dynamic(() => import("./components/FooterSection"), {
+  ssr: true,
+});
+const BookCallModal = dynamic(() => import("./components/BookCallModal"), {
+  ssr: false,
+});
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleOpenModal = useCallback(() => setIsModalOpen(true), []);
+  const handleCloseModal = useCallback(() => setIsModalOpen(false), []);
+
   return (
     <div className="min-h-screen bg-[#0a1e2e] text-white">
       {/* Book Call Modal */}
-      <BookCallModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      {isModalOpen && (
+        <BookCallModal isOpen={isModalOpen} onClose={handleCloseModal} />
+      )}
 
       {/* Header */}
-      <Header onBookCallClick={() => setIsModalOpen(true)} />
+      <Header onBookCallClick={handleOpenModal} />
 
       {/* Hero Section */}
       <HeroSection />
@@ -45,12 +69,10 @@ export default function Home() {
       <PricingSection />
 
       {/* CTA Section */}
-      <CTASection onBookCallClick={() => setIsModalOpen(true)} />
+      <CTASection onBookCallClick={handleOpenModal} />
 
       {/* Footer */}
       <FooterSection />
     </div>
   );
 }
-
-

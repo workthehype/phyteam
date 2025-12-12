@@ -1,26 +1,26 @@
-// Shared motion configurations for consistent animations across the site
+// Optimized motion configurations for better performance
 
 export const pageTransition = {
-  ease: [0.22, 1, 0.36, 1],
-  duration: 0.7,
+  ease: "easeOut",
+  duration: 0.4,
 };
 
 export const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 15 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.4, ease: "easeOut" },
 };
 
 export const fadeIn = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { duration: 0.5 },
+  transition: { duration: 0.3 },
 };
 
 export const scaleIn = {
-  initial: { opacity: 0, scale: 0.95 },
+  initial: { opacity: 0, scale: 0.97 },
   animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.3, ease: "easeOut" },
 };
 
 export const staggerContainer = {
@@ -28,36 +28,36 @@ export const staggerContainer = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
     },
   },
 };
 
 export const staggerItem = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 15 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
 };
 
 export const slideIn = (
   direction: "left" | "right" | "up" | "down" = "left"
 ) => {
   const axis = direction === "left" || direction === "right" ? "x" : "y";
-  const value = direction === "left" || direction === "up" ? -30 : 30;
+  const value = direction === "left" || direction === "up" ? -20 : 20;
 
   return {
     initial: { opacity: 0, [axis]: value },
     animate: { opacity: 1, [axis]: 0 },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: "easeOut" },
   };
 };
 
 export const hoverScale = {
   scale: 1.02,
-  transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.2, ease: "easeOut" },
 };
 
 export const hoverLift = {
-  y: -5,
-  transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+  y: -3,
+  transition: { duration: 0.2, ease: "easeOut" },
 };

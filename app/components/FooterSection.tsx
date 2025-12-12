@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Instagram,
-  Linkedin,
-  Youtube,
-  Twitter,
-} from "lucide-react";
+import { memo } from "react";
+import { Instagram, Linkedin, Youtube, Twitter } from "lucide-react";
 
 const FooterSection = () => {
   const currentYear = new Date().getFullYear();
@@ -22,10 +18,8 @@ const FooterSection = () => {
   return (
     <footer className="relative bg-gradient-to-b from-black to-[#05070d] text-white border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-14">
-
         {/* Top Grid */}
         <div className="grid md:grid-cols-4 gap-12 mb-14">
-          
           {/* Brand */}
           <div>
             <Link href="/" className="inline-block mb-5 cursor-pointer">
@@ -108,7 +102,6 @@ const FooterSection = () => {
         {/* Bottom Section */}
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-
             {/* Social Icons */}
             <div className="flex gap-4">
               {socialLinks.map((s, index) => (
@@ -144,10 +137,9 @@ const FooterSection = () => {
             </div>
           </div>
         </div>
-
       </div>
     </footer>
   );
 };
 
-export default FooterSection;
+export default memo(FooterSection);
