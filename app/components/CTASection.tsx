@@ -6,7 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { fadeUp, hoverScale } from "../utils/motion";
 
-const CTASection = () => {
+interface CTASectionProps {
+  onBookCallClick?: () => void;
+}
+
+const CTASection = ({ onBookCallClick }: CTASectionProps) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
@@ -64,15 +68,14 @@ const CTASection = () => {
                     Get Started
                   </motion.button>
                 </Link>
-                <Link href="/contact">
-                  <motion.button
-                    whileHover={hoverScale}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-400/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/20"
-                  >
-                    Book a Call
-                  </motion.button>
-                </Link>
+                <motion.button
+                  onClick={onBookCallClick}
+                  whileHover={hoverScale}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-400/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:bg-white/20"
+                >
+                  Book a Call
+                </motion.button>
               </div>
             </motion.div>
 

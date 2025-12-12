@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 const PricingSection = () => {
   const sectionRef = useRef(null);
@@ -359,13 +360,15 @@ const PricingSection = () => {
           <p className="text-gray-400 mb-4">
             Need a custom enterprise solution?
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="border-2 border-cyan-500/50 text-cyan-400 px-8 py-3 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300"
-          >
-            Contact Sales
-          </motion.button>
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="border-2 border-cyan-500/50 text-cyan-400 px-8 py-3 rounded-full font-semibold hover:bg-cyan-500/10 transition-all duration-300"
+            >
+              Contact Sales
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

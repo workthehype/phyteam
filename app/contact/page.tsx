@@ -53,33 +53,33 @@ const ContactPage = () => {
     {
       icon: "📞",
       title: "Call Us",
-      detail: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
+      detail: "coming soon",
+      link: "tel:+91",
       gradient: "from-blue-500 to-purple-500",
     },
     {
       icon: "📍",
       title: "Visit Us",
-      detail: "123 Tech Street, San Francisco, CA 94105",
+      detail: "Aligarh, U.P. India",
       link: "#",
       gradient: "from-purple-500 to-pink-500",
     },
     {
       icon: "⏰",
       title: "Business Hours",
-      detail: "Mon - Fri: 9AM - 6PM PST",
+      detail: "Mon - Fri: 9AM - 6PM IST",
       link: "#",
       gradient: "from-pink-500 to-cyan-500",
     },
   ];
 
   const services = [
+    "Website Development",
+    "Custom Software Development",
+    "Mobile App Development",
     "Cloud Solutions",
     "Data & AI",
-    "Cybersecurity",
-    "Digital Workplace",
     "Digital Strategy",
-    "IT Modernization",
     "Consulting",
     "Other",
   ];
@@ -260,7 +260,7 @@ const ContactPage = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         onFocus={() => setFocusedField("phone")}
-                        onBlur={() => setFocusedField(null)}
+                        onBlur={() => setFocusedField(null)}  
                         className={`w-full px-4 py-3 bg-gray-800/50 border ${
                           focusedField === "phone"
                             ? "border-cyan-400"
