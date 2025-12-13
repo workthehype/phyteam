@@ -35,6 +35,7 @@ function Header({ onBookCallClick }: HeaderProps) {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
+    { href: "/portfolio", label: "Portfolio" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
@@ -149,8 +150,8 @@ function Header({ onBookCallClick }: HeaderProps) {
           }`}
           style={{ backgroundColor: "#0f172a", opacity: 1 }}
         >
-            {/* Humberger menu's background color */}
-          <nav className="flex flex-col pt-24 px-6 space-y-3 relative bg-[#13243a]">  
+          {/* Humberger menu's background color */}
+          <nav className="flex flex-col pt-24 px-6 space-y-3 relative bg-[#13243a]">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
