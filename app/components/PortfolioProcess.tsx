@@ -217,7 +217,7 @@ export default function PortfolioProcess() {
                   {/* Glow Effect */}
                   {activeStep === step.id && (
                     <div
-                      className={`absolute -inset-0.5 bg-gradient-to-r ${step.color} rounded-2xl blur-md opacity-20 -z-10`}
+                      className={`absolute -inset-0.5 bg-gradient-to-r ${step.color} rounded-2xl blur-md opacity-10 -z-10`}
                     />
                   )}
                 </div>

@@ -18,70 +18,134 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "1to7 Media",
     category: "Web Development",
     description:
-      "Modern e-commerce solution with real-time inventory and AI-powered recommendations.",
-    image: "/images/project-1.jpg",
-    tags: ["Next.js", "TypeScript", "AI", "Stripe"],
-    link: "#",
+      "collaborate with brands to create engaging content, boost visibility, and drive real results through innovative digital campaigns.",
+    image: "/portfolioss/1to7.png",
+    tags: ["Next.js", "TypeScript", "AI", "Node.js", "Express.js", "MongoDB"],
+    link: "https://1to7media.in",
+    color: "from-cyan-500/20 to-blue-500/20",
+  },
+
+  {
+    id: 2,
+    title: "Attendance Taker",
+    category: "Full Stack",
+    description:
+      "Smart Attendance Taker App that leverages facial recognition, IP and Map technology to streamline attendance management for schools and organizations.",
+    image: "/portfolioss/AttendanceTaker.png",
+    tags: ["React.js", "JavaScript", "AI", "Node.js", "Express.js", "MongoDB"],
+    link: "https://attendancetaker.onrender.com",
     color: "from-cyan-500/20 to-blue-500/20",
   },
   {
-    id: 2,
-    title: "Healthcare Dashboard",
-    category: "UI/UX Design",
-    description:
-      "Intuitive dashboard for healthcare professionals to manage patient data efficiently.",
-    image: "/images/project-2.jpg",
-    tags: ["React", "Tailwind", "Chart.js", "Firebase"],
-    link: "#",
-    color: "from-purple-500/20 to-pink-500/20",
-  },
-  {
     id: 3,
-    title: "Mobile Banking App",
-    category: "Mobile Development",
-    description:
-      "Secure and user-friendly mobile banking experience with biometric authentication.",
-    image: "/images/project-3.jpg",
-    tags: ["React Native", "Node.js", "MongoDB", "Security"],
-    link: "#",
-    color: "from-green-500/20 to-emerald-500/20",
+    title: "Sharans",
+    category: "Web Development",
+    description: "Cosmetic Website ",
+    image: "/portfolioss/Sharans.png",
+    tags: ["Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB"],
+    link: "https://sharans.in",
+    color: "from-cyan-500/20 to-blue-500/20",
   },
   {
     id: 4,
-    title: "AI Content Generator",
-    category: "Machine Learning",
-    description:
-      "Intelligent content creation tool powered by advanced AI algorithms.",
-    image: "/images/project-4.jpg",
-    tags: ["Python", "TensorFlow", "API", "Cloud"],
-    link: "#",
-    color: "from-orange-500/20 to-red-500/20",
-  },
-  {
-    id: 5,
-    title: "Real Estate Platform",
-    category: "Full Stack",
-    description:
-      "Comprehensive property listing platform with virtual tours and advanced search.",
-    image: "/images/project-5.jpg",
-    tags: ["Vue.js", "Node.js", "PostgreSQL", "3D"],
-    link: "#",
-    color: "from-indigo-500/20 to-violet-500/20",
+    title: "Shoe Factory",
+    category: "Web Development",
+    description: "Shoe Factory Website ",
+    image: "/portfolioss/ShoeFactory.png",
+    tags: ["Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB"],
+    link: "https://shoefactory-74wj.onrender.com",
+    color: "from-cyan-500/20 to-blue-500/20",
   },
   {
     id: 6,
-    title: "Fitness Tracking App",
-    category: "Mobile & IoT",
+    title: "Smart Alarm",
+    category: "Mobile Development",
     description:
-      "Smart fitness companion with wearable integration and personalized coaching.",
-    image: "/images/project-6.jpg",
-    tags: ["Flutter", "IoT", "ML", "HealthKit"],
-    link: "#",
-    color: "from-teal-500/20 to-cyan-500/20",
+      "Smart Alarm App with customizable features and user-friendly interface to enhance your waking experience.",
+    image: "/portfolioss/SmartAlarm.jpg",
+    tags: ["React Native"],
+    link: "https://play.google.com/store/apps/details?id=com.smartalarmapp",
+    color: "from-green-500/20 to-emerald-500/20",
   },
+  {
+    id: 7,
+    title: "Quick IQ",
+    category: "Mobile Development",
+    description:
+      "Secure and user-friendly mobile banking experience with biometric authentication.",
+    image: "/portfolioss/QuickIQ.jpg",
+    tags: ["React Native"],
+    link: "https://play.google.com/store/apps/details?id=com.quickiq",
+    color: "from-green-500/20 to-emerald-500/20",
+  },
+  {
+    id: 8,
+    title: "Geo Attendance App",
+    category: "Mobile Development",
+    description: "Location based Attendance App with biometric authentication.",
+    image: "/portfolioss/GeoAttendance.jpg",
+    tags: ["React Native", "Firebase", "Security"],
+    link: "https://play.google.com/store/apps/details?id=com.locationattendence",
+    color: "from-green-500/20 to-emerald-500/20",
+  },
+  // {
+  //   id: 40,
+  //   title: "Healthcare Dashboard",
+  //   category: "UI/UX Design",
+  //   description:
+  //     "Intuitive dashboard for healthcare professionals to manage patient data efficiently.",
+  //   image: "",
+  //   tags: ["React", "Tailwind", "Chart.js", "Firebase"],
+  //   link: "#",
+  //   color: "from-purple-500/20 to-pink-500/20",
+  // },
+  // {
+  //   id: 41,
+  //   title: "Mobile Banking App",
+  //   category: "Mobile Development",
+  //   description:
+  //     "Secure and user-friendly mobile banking experience with biometric authentication.",
+  //   image: "",
+  //   tags: ["React Native", "Node.js", "MongoDB", "Security"],
+  //   link: "#",
+  //   color: "from-green-500/20 to-emerald-500/20",
+  // },
+  // {
+  //   id: 42,
+  //   title: "AI Content Generator",
+  //   category: "Machine Learning",
+  //   description:
+  //     "Intelligent content creation tool powered by advanced AI algorithms.",
+  //   image: "",
+  //   tags: ["Python", "TensorFlow", "API", "Cloud"],
+  //   link: "#",
+  //   color: "from-orange-500/20 to-red-500/20",
+  // },
+  // {
+  //   id: 43,
+  //   title: "Real Estate Platform",
+  //   category: "Full Stack",
+  //   description:
+  //     "Comprehensive property listing platform with virtual tours and advanced search.",
+  //   image: "",
+  //   tags: ["Vue.js", "Node.js", "PostgreSQL", "3D"],
+  //   link: "#",
+  //   color: "from-indigo-500/20 to-violet-500/20",
+  // },
+  // {
+  //   id: 44,
+  //   title: "Fitness Tracking App",
+  //   category: "Mobile & IoT",
+  //   description:
+  //     "Smart fitness companion with wearable integration and personalized coaching.",
+  //   image: "",
+  //   tags: ["Flutter", "IoT", "ML", "HealthKit"],
+  //   link: "#",
+  //   color: "from-teal-500/20 to-cyan-500/20",
+  // },
 ];
 
 const categories = [
@@ -265,21 +329,18 @@ export default function PortfolioSection() {
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900 z-10" />
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${project.color} z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                    className={`absolute inset-0 bg-gradient-to-br ${project.color} z-10 opacity-0 group-hover:opacity-30 transition-opacity duration-500`}
                   />
                   <div className="absolute inset-0 bg-black/40 z-10" />
 
-                  {/* Placeholder Image - Replace with actual images */}
-                  <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
-                    <div className="text-6xl opacity-20">
-                      {project.category === "Web Development" && "💻"}
-                      {project.category === "UI/UX Design" && "🎨"}
-                      {project.category === "Mobile Development" && "📱"}
-                      {project.category === "Machine Learning" && "🤖"}
-                      {project.category === "Full Stack" && "⚡"}
-                      {project.category === "Mobile & IoT" && "📊"}
-                    </div>
-                  </div>
+                  {/* Project Image */}
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
 
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4 z-20">
@@ -292,6 +353,8 @@ export default function PortfolioSection() {
                   <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <a
                       href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="px-6 py-3 bg-white text-black font-semibold rounded-full transform -translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-cyan-400 hover:scale-110"
                     >
                       View Project
@@ -333,7 +396,7 @@ export default function PortfolioSection() {
                         rgba(6, 182, 212, 0.3) 50%, 
                         transparent 100%
                       )
-                    `,     
+                    `,
                     animation:
                       hoveredProject === project.id
                         ? "border-flow 2s linear infinite"
