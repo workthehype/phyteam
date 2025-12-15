@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import FooterSection from "../components/FooterSection";
 import {
@@ -24,15 +25,21 @@ export default function ServicesPage() {
   const [activeService, setActiveService] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Prevent body scroll when modal is open
+  // Prevent body scroll when modal is open and fix scrollbar jump
   useEffect(() => {
     if (isModalOpen) {
+      // Get scrollbar width before hiding it
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
       document.body.style.overflow = "unset";
+      document.body.style.paddingRight = "0px";
     }
     return () => {
       document.body.style.overflow = "unset";
+      document.body.style.paddingRight = "0px";
     };
   }, [isModalOpen]);
 
@@ -43,7 +50,7 @@ export default function ServicesPage() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setTimeout(() => setActiveService(null), 300); // Wait for animation to complete
+    setTimeout(() => setActiveService(null), 400); // Wait for animation to complete
   };
 
   const services = [
@@ -375,170 +382,351 @@ export default function ServicesPage() {
       {/* Services Grid - Professional Layout */}
       <section className="relative py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => {
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+          >
+            {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <div
+                <motion.div
                   key={service.id}
-                  className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 cursor-pointer"
+                  className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 cursor-pointer overflow-hidden"
                   onClick={() => openModal(service.id)}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.5,
+                        ease: [0.25, 0.1, 0.25, 1],
+                      },
+                    },
+                  }}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.02,
+                    transition: {
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 20,
+                    },
+                  }}
+                  whileTap={{ scale: 0.98 }}
                 >
+                  {/* Gradient overlay on hover */}
+                  <motion.div
+                    className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}
+                  />
+
                   {/* Icon */}
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  <motion.div
+                    className={`relative w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6`}
+                    whileHover={{
+                      scale: 1.15,
+                      rotate: 5,
+                      transition: {
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      },
+                    }}
                   >
                     <Icon className="w-8 h-8 text-white" />
-                  </div>
+                  </motion.div>
 
                   {/* Title & Description */}
-                  <h3 className="text-2xl font-bold mb-3 text-white">
+                  <h3 className="relative text-2xl font-bold mb-3 text-white">
                     {service.title}
                   </h3>
-                  <p className="text-gray-400 mb-6 leading-relaxed">
+                  <p className="relative text-gray-400 mb-6 leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="relative flex flex-wrap gap-2 mb-6">
                     {service.technologies.map((tech, idx) => (
-                      <span
+                      <motion.span
                         key={idx}
-                        className="px-3 py-1 bg-slate-700/50 border border-slate-600 rounded-full text-xs text-gray-300"
+                        className="px-3 py-1 bg-slate-700/50 border border-slate-600 rounded-full text-xs text-gray-300 group-hover:border-cyan-500/30 transition-colors duration-300"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: index * 0.1 + idx * 0.05 }}
+                        viewport={{ once: true }}
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
                   {/* View Details Indicator */}
-                  <div className="flex items-center gap-2 text-cyan-400 text-sm font-semibold">
+                  <div className="relative flex items-center gap-2 text-cyan-400 text-sm font-semibold">
                     <span>View Details</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <motion.div
+                      animate={{
+                        x: [0, 4, 0],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Service Details Modal */}
-      {isModalOpen && activeService !== null && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn"
-          onClick={closeModal}
-        >
-          <div
-            className="relative bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-slideUp"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence mode="wait">
+        {isModalOpen && activeService !== null && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+            onClick={closeModal}
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{
+              duration: 0.35,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
           >
-            {(() => {
-              const service = services.find((s) => s.id === activeService);
-              if (!service) return null;
-              const Icon = service.icon;
+            <motion.div
+              className="relative bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.85, opacity: 0, y: 30 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.85, opacity: 0, y: 30 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30,
+                mass: 0.8,
+              }}
+            >
+              {(() => {
+                const service = services.find((s) => s.id === activeService);
+                if (!service) return null;
+                const Icon = service.icon;
 
-              return (
-                <>
-                  {/* Close Button */}
-                  <button
-                    onClick={closeModal}
-                    className="absolute top-6 right-6 w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
-                  >
-                    <X className="w-5 h-5 text-gray-400" />
-                  </button>
+                return (
+                  <>
+                    {/* Close Button */}
+                    <motion.button
+                      onClick={closeModal}
+                      className="absolute top-6 right-6 w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full flex items-center justify-center transition-all duration-300 z-10"
+                      initial={{ rotate: -90, opacity: 0 }}
+                      animate={{ rotate: 0, opacity: 1 }}
+                      exit={{ rotate: 90, opacity: 0 }}
+                      whileHover={{ scale: 1.1, rotate: 90 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <X className="w-5 h-5 text-gray-400" />
+                    </motion.button>
 
-                  {/* Gradient Background Overlay */}
-                  <div
-                    className={`absolute top-0 left-0 right-0 h-64 bg-gradient-to-br ${service.gradient} opacity-10 rounded-t-3xl`}
-                  />
+                    {/* Gradient Background Overlay */}
+                    <div
+                      className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-br ${service.gradient} opacity-10 rounded-t-3xl`}
+                    />
 
-                  {/* Content */}
-                  <div className="relative p-8 md:p-12">
-                    {/* Icon & Title */}
-                    <div className="flex items-start gap-6 mb-8">
-                      <div
-                        className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg`}
+                    {/* Content */}
+                    <motion.div
+                      className="relative p-4 md:p-6"
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                          opacity: 1,
+                          transition: {
+                            staggerChildren: 0.08,
+                            delayChildren: 0.1,
+                          },
+                        },
+                      }}
+                    >
+                      {/* Icon & Title */}
+                      <motion.div
+                        className="flex items-start gap-3 mb-4"
+                        variants={{
+                          hidden: { opacity: 0, y: 20 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
                       >
-                        <Icon className="w-10 h-10 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <h2 className="text-4xl font-black text-white mb-3">
-                          {service.title}
-                        </h2>
-                        <p className="text-gray-300 text-lg leading-relaxed">
-                          {service.description}
-                        </p>
-                      </div>
-                    </div>
+                        <motion.div
+                          className={`w-14 h-14 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <Icon className="w-7 h-7 text-white" />
+                        </motion.div>
+                        <div className="flex-1">
+                          <h2 className="text-2xl font-black text-white">
+                            {service.title}
+                          </h2>
+                        </div>
+                      </motion.div>
 
-                    {/* Features Section */}
-                    <div className="mb-8">
-                      <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                        <div
-                          className={`w-1 h-8 bg-gradient-to-b ${service.gradient} rounded-full`}
-                        />
-                        Key Features
-                      </h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {service.features.map((feature, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-start gap-3 bg-slate-800/50 p-4 rounded-xl border border-slate-700/50 hover:border-cyan-500/30 transition-colors duration-300"
-                            style={{
-                              animationDelay: `${idx * 50}ms`,
-                              animation: "slideUp 0.4s ease-out forwards",
-                            }}
+                      {/* Features Section */}
+                      <motion.div
+                        className="mb-4"
+                        variants={{
+                          hidden: { opacity: 0, y: 20 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                      >
+                        <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                          <motion.div
+                            className={`w-1 h-5 bg-gradient-to-b ${service.gradient} rounded-full`}
+                            initial={{ height: 0 }}
+                            animate={{ height: 20 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                          />
+                          Key Features
+                        </h3>
+                        <motion.div
+                          className="grid grid-cols-1 md:grid-cols-2 gap-2.5"
+                          variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                              opacity: 1,
+                              transition: {
+                                staggerChildren: 0.06,
+                              },
+                            },
+                          }}
+                        >
+                          {service.features.map((feature, idx) => (
+                            <motion.div
+                              key={idx}
+                              className="flex items-start gap-2 bg-slate-800/50 p-2.5 rounded-lg border border-slate-700/50 hover:border-cyan-500/30 transition-colors duration-300"
+                              variants={{
+                                hidden: { opacity: 0, x: -20 },
+                                visible: { opacity: 1, x: 0 },
+                              }}
+                              whileHover={{
+                                scale: 1.02,
+                                x: 4,
+                                transition: { duration: 0.2 },
+                              }}
+                            >
+                              <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                              <span className="text-gray-300 text-xs font-medium">
+                                {feature}
+                              </span>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+                      </motion.div>
+
+                      {/* Technologies Section */}
+                      <motion.div
+                        className="mb-4"
+                        variants={{
+                          hidden: { opacity: 0, y: 20 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                      >
+                        <h3 className="text-base font-bold text-white mb-2">
+                          Technologies We Use
+                        </h3>
+                        <motion.div
+                          className="flex flex-wrap gap-2"
+                          variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                              opacity: 1,
+                              transition: {
+                                staggerChildren: 0.05,
+                              },
+                            },
+                          }}
+                        >
+                          {service.technologies.map((tech, idx) => (
+                            <motion.span
+                              key={idx}
+                              className={`px-3 py-1.5 bg-gradient-to-r ${service.gradient} bg-opacity-10 border border-slate-600 rounded-full text-xs text-white font-semibold shadow-lg cursor-default`}
+                              variants={{
+                                hidden: { opacity: 0, scale: 0.8 },
+                                visible: { opacity: 1, scale: 1 },
+                              }}
+                              whileHover={{
+                                scale: 1.1,
+                                y: -2,
+                                transition: {
+                                  type: "spring",
+                                  stiffness: 400,
+                                  damping: 10,
+                                },
+                              }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              {tech}
+                            </motion.span>
+                          ))}
+                        </motion.div>
+                      </motion.div>
+
+                      {/* CTA Buttons */}
+                      <motion.div
+                        className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-700"
+                        variants={{
+                          hidden: { opacity: 0, y: 20 },
+                          visible: { opacity: 1, y: 0 },
+                        }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                      >
+                        <motion.div
+                          className="flex-1"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <Link
+                            href="/contact"
+                            className={`w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r ${service.gradient} text-white px-6 py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300`}
                           >
-                            <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                            <span className="text-gray-300 text-sm font-medium">
-                              {feature}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Technologies Section */}
-                    <div className="mb-8">
-                      <h3 className="text-xl font-bold text-white mb-4">
-                        Technologies We Use
-                      </h3>
-                      <div className="flex flex-wrap gap-3">
-                        {service.technologies.map((tech, idx) => (
-                          <span
-                            key={idx}
-                            className={`px-5 py-2.5 bg-gradient-to-r ${service.gradient} bg-opacity-10 border border-slate-600 rounded-full text-sm text-white font-semibold shadow-lg hover:scale-105 transition-transform duration-300`}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* CTA Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-slate-700">
-                      <Link
-                        href="/contact"
-                        className={`flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r ${service.gradient} text-white px-8 py-4 rounded-xl font-bold hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105`}
-                      >
-                        Get Started
-                        <ArrowRight className="w-5 h-5" />
-                      </Link>
-                      <button
-                        onClick={closeModal}
-                        className="px-8 py-4 rounded-xl font-bold border-2 border-slate-600 hover:border-cyan-500/50 bg-slate-800/50 transition-all duration-300 hover:scale-105"
-                      >
-                        Close
-                      </button>
-                    </div>
-                  </div>
-                </>
-              );
-            })()}
-          </div>
-        </div>
-      )}
+                            Get Started
+                            <ArrowRight className="w-5 h-5" />
+                          </Link>
+                        </motion.div>
+                        <motion.button
+                          onClick={closeModal}
+                          className="px-6 py-3 rounded-lg font-bold border-2 border-slate-600 hover:border-cyan-500/50 bg-slate-800/50 transition-all duration-300"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          Close
+                        </motion.button>
+                      </motion.div>
+                    </motion.div>
+                  </>
+                );
+              })()}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Why Choose Us Section */}
       <section className="relative py-20 px-6 bg-slate-900/50">

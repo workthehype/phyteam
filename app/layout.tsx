@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header"; // Header is client component
+import StickyContact from "./components/StickyContact";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +41,12 @@ export const metadata: Metadata = {
       "Modern, fast websites and mobile apps designed for growth. Built by Phyteam.",
     siteName: "Phyteam",
     images: [
-      { url: "/og-image.png", width: 1200, height: 630, alt: "Phyteam — Modern Web & App Development" },
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Phyteam — Modern Web & App Development",
+      },
     ],
   },
   twitter: {
@@ -51,14 +57,25 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/favicon.ico", shortcut: "/favicon-16x16.png", apple: "/apple-touch-icon.png" },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-black`}
+      >
         <Header />
+        <StickyContact />
         <div className="">{children}</div>
       </body>
     </html>

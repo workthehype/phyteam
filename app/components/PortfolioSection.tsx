@@ -333,7 +333,7 @@ export default function PortfolioSection() {
                         rgba(6, 182, 212, 0.3) 50%, 
                         transparent 100%
                       )
-                    `,
+                    `,     
                     animation:
                       hoveredProject === project.id
                         ? "border-flow 2s linear infinite"

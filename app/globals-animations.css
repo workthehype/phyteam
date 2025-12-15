@@ -223,7 +223,7 @@
 
 .animate-pulse-slow {
   animation: pulse-slow 8s ease-in-out infinite;
-}
+}  
 
 /* Fade in animation for modal backdrop */
 @keyframes fadeIn {
