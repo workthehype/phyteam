@@ -1,14 +1,14 @@
 // Optimized motion configurations for better performance
 
 export const pageTransition = {
-  ease: "easeOut",
+  ease: [0.4, 0, 0.2, 1] as const,
   duration: 0.4,
 };
 
 export const fadeUp = {
   initial: { opacity: 0, y: 15 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.4, ease: "easeOut" },
+  transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as const },
 };
 
 export const fadeIn = {
@@ -20,7 +20,7 @@ export const fadeIn = {
 export const scaleIn = {
   initial: { opacity: 0, scale: 0.97 },
   animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.3, ease: "easeOut" },
+  transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] as const },
 };
 
 export const staggerContainer = {
@@ -36,7 +36,11 @@ export const staggerContainer = {
 
 export const staggerItem = {
   hidden: { opacity: 0, y: 15 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] as const },
+  },
 };
 
 export const slideIn = (
@@ -48,16 +52,16 @@ export const slideIn = (
   return {
     initial: { opacity: 0, [axis]: value },
     animate: { opacity: 1, [axis]: 0 },
-    transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as const },
   };
 };
 
 export const hoverScale = {
   scale: 1.02,
-  transition: { duration: 0.2, ease: "easeOut" },
+  transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] as const },
 };
 
 export const hoverLift = {
   y: -3,
-  transition: { duration: 0.2, ease: "easeOut" },
+  transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] as const },
 };

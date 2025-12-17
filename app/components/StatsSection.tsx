@@ -1,146 +1,60 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef, memo } from "react";
+import { useRef, useEffect, memo, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const StatsSection = () => {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.15, once: true }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section
       ref={sectionRef}
       className="relative py-32 px-6 bg-gradient-to-b from-black via-[#0a1520] to-[#0f1e2e] overflow-hidden"
     >
-      {/* Animated curved gradient waves */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isInView ? 1 : 0 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0"
-        >
-          {/* Top curved wave */}
-          <motion.svg
-            className="absolute top-0 left-0 w-full"
-            viewBox="0 0 1440 320"
-            preserveAspectRatio="none"
-            style={{ height: "40%" }}
-          >
-            <motion.path
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 0.3 } : {}}
-              transition={{ duration: 1 }}
-              fill="none"
-              stroke="url(#gradient1)"
-              strokeWidth="2"
-              d="M0,160 C320,100 420,180 720,160 C1020,140 1120,200 1440,180 L1440,0 L0,0 Z"
-            />
-            <motion.path
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 0.2 } : {}}
-              transition={{ duration: 1, delay: 0.2 }}
-              fill="none"
-              stroke="url(#gradient1)"
-              strokeWidth="2"
-              d="M0,120 C320,80 420,140 720,120 C1020,100 1120,160 1440,140 L1440,0 L0,0 Z"
-            />
-            <defs>
-              <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.8" />
-              </linearGradient>
-            </defs>
-          </motion.svg>
+      {/* Static gradient background - Performance optimized */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0">
+          {/* Simplified static background */}
+          <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-cyan-500/5 to-transparent" />
+          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-purple-500/5 to-transparent" />
 
-          {/* Bottom curved wave */}
-          <motion.svg
-            className="absolute bottom-0 left-0 w-full"
-            viewBox="0 0 1440 320"
-            preserveAspectRatio="none"
-            style={{ height: "50%" }}
-          >
-            <motion.path
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 0.4 } : {}}
-              transition={{ duration: 1, delay: 0.3 }}
-              fill="url(#gradient2)"
-              d="M0,224 C320,160 420,240 720,224 C1020,208 1120,256 1440,240 L1440,320 L0,320 Z"
-            />
-            <motion.path
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 0.3 } : {}}
-              transition={{ duration: 1, delay: 0.5 }}
-              fill="url(#gradient3)"
-              d="M0,256 C320,192 420,272 720,256 C1020,240 1120,288 1440,272 L1440,320 L0,320 Z"
-            />
-            <defs>
-              <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.15" />
-                <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.15" />
-                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.15" />
-              </linearGradient>
-              <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.1" />
-                <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.1" />
-                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.1" />
-              </linearGradient>
-            </defs>
-          </motion.svg>
-
-          {/* Animated gradient orbs */}
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              x: [0, 50, 0],
-              opacity: [0.1, 0.15, 0.1],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              scale: [1, 1.3, 1],
-              x: [0, -50, 0],
-              opacity: [0.1, 0.15, 0.1],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2,
-            }}
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"
-          />
-        </motion.div>
+          {/* Static gradient orbs - Performance optimized */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        </div>
       </div>
 
       {/* Content */}
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-20"
-        >
-          <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
             Don&apos;t take our word{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
               for it.
             </span>
-          </motion.h2>
-        </motion.div>
+          </h2>
+        </div>
 
         {/* Stats Grid */}
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
@@ -234,52 +148,30 @@ const StatCard = ({
       transition={{
         duration: 0.8,
         delay,
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
       }}
       whileHover={{
         scale: 1.05,
-        transition: { type: "spring", stiffness: 400, damping: 10 },
+        transition: { type: "spring" as const, stiffness: 400, damping: 10 },
       }}
       className="group relative text-center"
     >
-      {/* Glow effect on hover */}
-      <motion.div
-        className="absolute -inset-4 bg-gradient-to-r from-cyan-500/0 via-blue-500/0 to-purple-500/0 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        animate={{
-          background: [
-            "linear-gradient(90deg, rgba(6,182,212,0) 0%, rgba(59,130,246,0) 50%, rgba(139,92,246,0) 100%)",
-            "linear-gradient(90deg, rgba(6,182,212,0.3) 0%, rgba(59,130,246,0.3) 50%, rgba(139,92,246,0.3) 100%)",
-            "linear-gradient(90deg, rgba(6,182,212,0) 0%, rgba(59,130,246,0) 50%, rgba(139,92,246,0) 100%)",
-          ],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      {/* Simplified glow effect - removed expensive animation */}
+      <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/0 via-blue-500/20 to-purple-500/0 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Card content */}
       <div className="relative z-10">
-        {/* Number with animated gradient */}
-        <motion.div
-          className="text-6xl md:text-7xl lg:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 group-hover:from-purple-400 group-hover:via-pink-400 group-hover:to-cyan-400 transition-all duration-500"
-          whileHover={{ scale: 1.1 }}
-        >
+        {/* Number with gradient - removed expensive animation */}
+        <div className="text-6xl md:text-7xl lg:text-8xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 group-hover:from-purple-400 group-hover:via-pink-400 group-hover:to-cyan-400 transition-all duration-500">
           <AnimatedCounter value={number} decimal={decimal} />
           {suffix}
-        </motion.div>
+        </div>
 
         {/* Label */}
-        <motion.p
-          className="text-gray-400 text-sm md:text-base lg:text-lg font-light tracking-wide group-hover:text-gray-200 transition-colors duration-300"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: delay + 0.5, duration: 0.5 }}
-        >
+        <p className="text-gray-400 text-sm md:text-base lg:text-lg font-light tracking-wide group-hover:text-gray-200 transition-colors duration-300">
           {label}
-        </motion.p>
+        </p>
 
         {/* Decorative line */}
         <motion.div
@@ -298,8 +190,12 @@ const StatCard = ({
             scale: [1, 1.1, 1],
           }}
           transition={{
-            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-            scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+            rotate: { duration: 20, repeat: Infinity, ease: "linear" as const },
+            scale: {
+              duration: 2,
+              repeat: Infinity,
+              ease: [0.4, 0, 0.6, 1] as const,
+            },
           }}
         />
       </div>

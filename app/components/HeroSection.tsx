@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { memo } from "react";
+import { typography } from "../utils/typography";
 
-const HeroSection = () => {
+const HeroSection = memo(() => {
   return (
     <section className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden bg-black">
       {/* Hero Image Background with Overlay */}
@@ -39,7 +40,7 @@ const HeroSection = () => {
       <div className="max-w-6xl mx-auto relative z-10 text-center">
         {/* Main heading */}
         <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h1 className={`${typography.hero.h1} mb-6`}>
             <span className="inline-block animate-fade-in stagger-1">
               Transform Your Business
             </span>
@@ -56,17 +57,21 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in stagger-6">
-            We empower businesses with custom software development, Mobile Application development, data analytics,
-            AI integration, and cloud solutions to drive growth,
-            efficiency, and lasting impact.
+          <p
+            className={`${typography.body.large} text-gray-300 max-w-3xl mx-auto animate-fade-in stagger-6`}
+          >
+            We empower businesses with custom software development, Mobile
+            Application development, data analytics, AI integration, and cloud
+            solutions to drive growth, efficiency, and lasting impact.
           </p>
         </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20 animate-slide-up stagger-7">
           <Link href="#services">
-            <button className="relative group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-4 rounded-full font-semibold text-lg overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50 active:scale-95">
+            <button
+              className={`relative group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-4 rounded-full ${typography.ui.button.large} overflow-hidden shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/50 active:scale-95`}
+            >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10 flex items-center gap-2">
                 Get Started
@@ -88,7 +93,9 @@ const HeroSection = () => {
           </Link>
 
           <Link href="/about">
-            <button className="relative group border-2 border-white/30 text-white px-10 py-4 rounded-full font-semibold text-lg overflow-hidden backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900 active:scale-95 cursor-pointer">
+            <button
+              className={`relative group border-2 border-white/30 text-white px-10 py-4 rounded-full ${typography.ui.button.large} overflow-hidden backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white hover:text-gray-900 active:scale-95 cursor-pointer`}
+            >
               <span className="relative z-10">Learn More</span>
             </button>
           </Link>
@@ -117,6 +124,6 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
+});
 
-export default memo(HeroSection);
+export default HeroSection;

@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import Header from "../components/Header";
 import FooterSection from "../components/FooterSection";
+import { typography } from "../utils/typography";
 
 const ContactPage = () => {
   const heroRef = useRef(null);
@@ -77,10 +78,7 @@ const ContactPage = () => {
     "Website Development",
     "Custom Software Development",
     "Mobile App Development",
-    "Cloud Solutions",
-    "Data & AI",
-    "Digital Strategy",
-    "Consulting",
+    "Digital Marketing",
     "Other",
   ];
 
@@ -129,19 +127,19 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
+            className={`${typography.hero.h1} mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent`}
           >
-            Let's Connect
+            Let&apos;s Connect
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 leading-relaxed"
+            className={`${typography.body.large} text-gray-300`}
           >
-            Have a project in mind? We'd love to hear from you. Send us a
-            message and we'll respond as soon as possible.
+            Have a project in mind? We&apos;d love to hear from you. Send us a
+            message and we&apos;ll respond as soon as possible.
           </motion.p>
         </motion.div>
       </section>
@@ -160,7 +158,9 @@ const ContactPage = () => {
               <div className="bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 md:p-12 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl" />
 
-                <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent relative z-10">
+                <h2
+                  className={`${typography.heading.h2} mb-8 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent relative z-10`}
+                >
                   Send us a Message
                 </h2>
 
@@ -325,12 +325,14 @@ const ContactPage = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                <h2
+                  className={`${typography.heading.h2} mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent`}
+                >
                   Get in Touch
                 </h2>
-                <p className="text-gray-400 text-lg leading-relaxed">
-                  We're here to answer any questions you may have about our
-                  services. Reach out to us and we'll respond as soon as we can.
+                <p className={`${typography.body.base} text-gray-400`}>
+                  We&apos;re here to answer any questions you may have about our
+                  services. Reach out to us and we&apos;ll respond as soon as we can.
                 </p>
               </div>
 

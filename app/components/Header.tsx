@@ -9,7 +9,7 @@ interface HeaderProps {
   onBookCallClick?: () => void;
 }
 
-function Header({ onBookCallClick }: HeaderProps) {
+const Header = memo(function Header({ onBookCallClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -201,6 +201,6 @@ function Header({ onBookCallClick }: HeaderProps) {
       </div>
     </header>
   );
-}
+});
 
-export default memo(Header);
+export default Header;

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, memo } from "react";
+import { typography } from "../utils/typography";
 
 const WhyChooseSection = () => {
   const sectionRef = useRef(null);
@@ -29,7 +30,7 @@ const WhyChooseSection = () => {
       y: 0,
       transition: {
         duration: 0.4,
-        ease: "easeOut",
+        ease: [0.4, 0, 0.2, 1] as const,
       },
     },
   };
@@ -103,35 +104,18 @@ const WhyChooseSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-20"
-        >
-          <motion.p
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={
-              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
-            }
-            transition={{ duration: 0.5 }}
-            className="text-cyan-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold"
-          >
+        <div className="text-center mb-20">
+          <p className="text-cyan-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold">
             Trust
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-white"
-          >
+          </p>
+          <h2 className={`${typography.hero.h1} bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-white`}>
             Why Companies
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
               Choose Phyteam
             </span>
-          </motion.h2>
-        </motion.div>
+          </h2>
+        </div>
 
         <motion.div
           variants={containerVariants}
@@ -144,11 +128,9 @@ const WhyChooseSection = () => {
               key={index}
               variants={cardVariants}
               whileHover={{
-                scale: 1.05,
-                rotateY: 5,
-                z: 50,
+                scale: 1.03,
                 transition: {
-                  type: "spring",
+                  type: "spring" as const,
                   stiffness: 300,
                   damping: 20,
                 },
@@ -170,7 +152,10 @@ const WhyChooseSection = () => {
                 <motion.div
                   initial={{ x: "-100%" }}
                   whileHover={{ x: "200%" }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  transition={{
+                    duration: 0.8,
+                    ease: [0.4, 0, 0.6, 1] as const,
+                  }}
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
                 />
 
@@ -193,7 +178,7 @@ const WhyChooseSection = () => {
                         transition={{
                           duration: 3,
                           repeat: Infinity,
-                          ease: "easeInOut",
+                          ease: [0.4, 0, 0.6, 1] as const,
                         }}
                         className="text-6xl filter drop-shadow-lg"
                       >

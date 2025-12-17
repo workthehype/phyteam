@@ -152,7 +152,7 @@ const TestimonialsSection = () => {
         transition={{
           duration: 8,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: [0.4, 0, 0.6, 1] as const,
         }}
         className="absolute top-20 left-10 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"
       />
@@ -164,7 +164,7 @@ const TestimonialsSection = () => {
         transition={{
           duration: 10,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: [0.4, 0, 0.6, 1] as const,
           delay: 2,
         }}
         className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl"
@@ -208,7 +208,7 @@ const TestimonialsSection = () => {
               initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
               animate={{ opacity: 1, scale: 1, rotateY: 0 }}
               exit={{ opacity: 0, scale: 0.9, rotateY: 10 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              transition={{ duration: 0.5, ease: [0.4, 0, 0.6, 1] as const }}
               className="relative"
             >
               {/* Glow effect */}

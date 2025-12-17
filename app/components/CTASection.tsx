@@ -5,6 +5,7 @@ import { useRef, memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { fadeUp, hoverScale } from "../utils/motion";
+import { typography } from "../utils/typography";
 
 interface CTASectionProps {
   onBookCallClick?: () => void;
@@ -46,14 +47,14 @@ const CTASection = ({ onBookCallClick }: CTASectionProps) => {
               animate={isInView ? "animate" : "initial"}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className={`${typography.heading.h2} mb-6`}>
                 <span className="text-white">Ready to Start Your </span>
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                   Digital Transformation?
                 </span>
               </h2>
 
-              <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+              <p className={`${typography.body.base} text-gray-300 mb-8`}>
                 Let&apos;s discuss how Phyteam can help your business scale,
                 innovate, and succeed with modern technology solutions.
               </p>

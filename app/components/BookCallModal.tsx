@@ -42,11 +42,9 @@ const BookCallModal = ({ isOpen, onClose }: BookCallModalProps) => {
 
   const services = [
     "Website Development",
-    "Custom Software",
+    "Custom Software Development",
     "Mobile App Development",
-    "Data & AI Consulting",
-    "SEO & Digital Marketing",
-    "Digital Strategy",
+    "Digital Marketing",
     "Other",
   ];
 

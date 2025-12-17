@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { useInView } from "../hooks/useInView";
 
 interface Project {
   id: number;
@@ -153,16 +152,16 @@ const categories = [
   "Web Development",
   "UI/UX Design",
   "Mobile Development",
-  "Machine Learning",
+  // "Machine Learning",
   "Full Stack",
 ];
 
 export default function PortfolioSection() {
-  const [ref, isInView] = useInView({ threshold: 0.1 });
   const [activeCategory, setActiveCategory] = useState("All Projects");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef<HTMLElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   const filteredProjects =
     activeCategory === "All Projects"
@@ -180,20 +179,27 @@ export default function PortfolioSection() {
       }
     };
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
     const section = sectionRef.current;
     if (section) {
       section.addEventListener("mousemove", handleMouseMove);
-      return () => section.removeEventListener("mousemove", handleMouseMove);
+      observer.observe(section);
+      return () => {
+        section.removeEventListener("mousemove", handleMouseMove);
+        observer.unobserve(section);
+      };
     }
   }, []);
 
   return (
     <section
-      ref={(node) => {
-        (ref as React.MutableRefObject<HTMLElement | null>).current = node;
-        (sectionRef as React.MutableRefObject<HTMLElement | null>).current =
-          node;
-      }}
+      ref={sectionRef}
       className="relative py-24 px-6 bg-black overflow-hidden"
     >
       {/* Animated Background */}

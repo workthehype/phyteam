@@ -85,7 +85,7 @@ const PricingSection = () => {
       y: 0,
       scale: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 80,
         damping: 15,
       },
@@ -108,7 +108,7 @@ const PricingSection = () => {
           <motion.path
             initial={{ pathLength: 0, opacity: 0 }}
             animate={isInView ? { pathLength: 1, opacity: 0.3 } : {}}
-            transition={{ duration: 2, ease: "easeInOut" }}
+            transition={{ duration: 2, ease: [0.4, 0, 0.6, 1] as const }}
             fill="url(#pricingGradient)"
             d="M0,256 C320,192 420,288 720,256 C1020,224 1120,320 1440,288 L1440,400 L0,400 Z"
           />
@@ -206,7 +206,7 @@ const PricingSection = () => {
                       transition={{
                         duration: 2,
                         repeat: Infinity,
-                        ease: "linear",
+                        ease: "linear" as const,
                       }}
                     >
                       ⭐
@@ -244,7 +244,7 @@ const PricingSection = () => {
                   animate={
                     hoveredPlan === index ? { x: "200%" } : { x: "-100%" }
                   }
-                  transition={{ duration: 1, ease: "easeInOut" }}
+                  transition={{ duration: 1, ease: [0.4, 0, 0.6, 1] as const }}
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                 />
 

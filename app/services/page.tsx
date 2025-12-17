@@ -5,13 +5,13 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import FooterSection from "../components/FooterSection";
+import { typography } from "../utils/typography";
 import {
   Code,
   Smartphone,
   Cloud,
   Brain,
   TrendingUp,
-  Users,
   ArrowRight,
   CheckCircle2,
   Target,
@@ -74,7 +74,7 @@ export default function ServicesPage() {
     {
       id: 2,
       icon: Smartphone,
-      title: "Mobile Development",
+      title: "Mobile Application Development",
       description:
         "Native and cross-platform mobile solutions that deliver exceptional user experiences.",
       features: [
@@ -88,73 +88,90 @@ export default function ServicesPage() {
       technologies: ["React Native", "Flutter", "Swift", "Kotlin"],
       gradient: "from-purple-500 to-pink-600",
     },
-    {
-      id: 3,
-      icon: Cloud,
-      title: "Cloud Solutions",
-      description:
-        "Scalable cloud infrastructure designed for reliability, security, and performance.",
-      features: [
-        "Cloud Migration",
-        "Infrastructure as Code",
-        "DevOps Implementation",
-        "Container Orchestration",
-        "Serverless Architecture",
-        "Cloud Security",
-      ],
-      technologies: ["AWS", "Azure", "GCP", "Kubernetes"],
-      gradient: "from-blue-500 to-cyan-600",
-    },
-    {
-      id: 4,
-      icon: Brain,
-      title: "AI & Machine Learning",
-      description:
-        "Intelligent solutions powered by artificial intelligence and advanced analytics.",
-      features: [
-        "Machine Learning Models",
-        "Natural Language Processing",
-        "Computer Vision",
-        "Predictive Analytics",
-        "AI Integration",
-        "Data Science",
-      ],
-      technologies: ["TensorFlow", "PyTorch", "Python", "Scikit-learn"],
-      gradient: "from-pink-500 to-purple-600",
-    },
-    {
-      id: 5,
+    // {
+    //   id: 3,
+    //   icon: Cloud,
+    //   title: "Cloud Solutions",
+    //   description:
+    //     "Scalable cloud infrastructure designed for reliability, security, and performance.",
+    //   features: [
+    //     "Cloud Migration",
+    //     "Infrastructure as Code",
+    //     "DevOps Implementation",
+    //     "Container Orchestration",
+    //     "Serverless Architecture",
+    //     "Cloud Security",
+    //   ],
+    //   technologies: ["AWS", "Azure", "GCP", "Kubernetes"],
+    //   gradient: "from-blue-500 to-cyan-600",
+    // },
+    // {
+    //   id: 4,
+    //   icon: Brain,
+    //   title: "AI & Machine Learning",
+    //   description:
+    //     "Intelligent solutions powered by artificial intelligence and advanced analytics.",
+    //   features: [
+    //     "Machine Learning Models",
+    //     "Natural Language Processing",
+    //     "Computer Vision",
+    //     "Predictive Analytics",
+    //     "AI Integration",
+    //     "Data Science",
+    //   ],
+    //   technologies: ["TensorFlow", "PyTorch", "Python", "Scikit-learn"],
+    //   gradient: "from-pink-500 to-purple-600",
+    // },
+    // {
+    //   id: 5,
+    //   icon: TrendingUp,
+    //   title: "Digital Marketing",
+    //   description:
+    //     "Data-driven marketing strategies that drive growth and maximize ROI.",
+    //   features: [
+    //     "SEO & SEM",
+    //     "Content Marketing",
+    //     "Social Media Strategy",
+    //     "Email Campaigns",
+    //     "Analytics & Reporting",
+    //     "Conversion Optimization",
+    //   ],
+    //   technologies: ["Google Analytics", "SEMrush", "HubSpot", "Mailchimp"],
+    //   gradient: "from-orange-500 to-red-600",
+    // },
+    // {
+    //   id: 6,
+    //   icon: Users,
+    //   title: "Consulting Services",
+    //   description:
+    //     "Strategic guidance to help you navigate digital transformation and achieve your goals.",
+    //   features: [
+    //     "Technology Strategy",
+    //     "Digital Transformation",
+    //     "Process Optimization",
+    //     "Team Training",
+    //     "Quality Assurance",
+    //     "Project Management",
+    //   ],
+    //   technologies: ["Agile", "Scrum", "JIRA", "Confluence"],
+    //   gradient: "from-teal-500 to-green-600",
+    // },
+        {
+      id: 7,
       icon: TrendingUp,
-      title: "Digital Marketing",
+      title: "Custom Software Development",
       description:
-        "Data-driven marketing strategies that drive growth and maximize ROI.",
+        "Scalable software solutions tailored to your business needs.",
       features: [
-        "SEO & SEM",
-        "Content Marketing",
-        "Social Media Strategy",
-        "Email Campaigns",
-        "Analytics & Reporting",
-        "Conversion Optimization",
+        "Bespoke Software Solutions",
+        "System Integration",
+        "Enterprise Applications",
+        "Software Maintenance",
+        "Legacy System Modernization",
+        "Quality Assurance & Testing",
       ],
-      technologies: ["Google Analytics", "SEMrush", "HubSpot", "Mailchimp"],
+      technologies: ["Java", "C#", "Python", "JavaScript"],
       gradient: "from-orange-500 to-red-600",
-    },
-    {
-      id: 6,
-      icon: Users,
-      title: "Consulting Services",
-      description:
-        "Strategic guidance to help you navigate digital transformation and achieve your goals.",
-      features: [
-        "Technology Strategy",
-        "Digital Transformation",
-        "Process Optimization",
-        "Team Training",
-        "Quality Assurance",
-        "Project Management",
-      ],
-      technologies: ["Agile", "Scrum", "JIRA", "Confluence"],
-      gradient: "from-teal-500 to-green-600",
     },
   ];
 
@@ -191,13 +208,12 @@ export default function ServicesPage() {
 
       {/* Hero Section - Modern & Dynamic */}
       <section className="relative pt-32 pb-32 px-6 overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Large gradient orbs */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] animate-pulse-slow" />
+        {/* Static Background Elements - Performance optimized */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Large gradient orbs - static for performance */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] opacity-50" />
           <div
-            className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px] animate-pulse-slow"
-            style={{ animationDelay: "1s" }}
+            className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px] opacity-50"
           />
 
           {/* Diagonal lines pattern */}
@@ -222,16 +238,13 @@ export default function ServicesPage() {
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/30 rounded-full px-6 py-3 backdrop-blur-sm">
                 <div className="flex gap-1">
                   <div
-                    className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"
-                    style={{ animationDelay: "0s" }}
+                    className="w-2 h-2 bg-cyan-400 rounded-full"
                   />
                   <div
-                    className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"
-                    style={{ animationDelay: "0.2s" }}
+                    className="w-2 h-2 bg-purple-400 rounded-full"
                   />
                   <div
-                    className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"
-                    style={{ animationDelay: "0.4s" }}
+                    className="w-2 h-2 bg-blue-400 rounded-full"
                   />
                 </div>
                 <span className="text-cyan-400 text-sm font-bold tracking-wider">
@@ -239,14 +252,14 @@ export default function ServicesPage() {
                 </span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight">
+              <h1 className={`${typography.hero.h1} font-black`}>
                 <span className="block text-white mb-2">Transform Your</span>
                 <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                   Digital Presence
                 </span>
               </h1>
 
-              <p className="text-xl text-gray-300 leading-relaxed">
+              <p className={`${typography.body.large} text-gray-300`}>
                 Partner with industry experts to build scalable, innovative
                 solutions that drive growth and exceed expectations. We turn
                 complex challenges into elegant digital experiences.
@@ -255,7 +268,7 @@ export default function ServicesPage() {
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link
                   href="/contact"
-                  className="group relative bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg overflow-hidden shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 hover:scale-105"
+                  className={`group relative bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl ${typography.ui.button.large} overflow-hidden shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 hover:scale-105`}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     Start Your Project
@@ -266,7 +279,7 @@ export default function ServicesPage() {
 
                 <Link
                   href="/about"
-                  className="group px-8 py-4 rounded-xl font-bold text-lg border-2 border-slate-700 hover:border-cyan-500/50 bg-slate-800/50 backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                  className={`group px-8 py-4 rounded-xl ${typography.ui.button.large} border-2 border-slate-700 hover:border-cyan-500/50 bg-slate-800/50 backdrop-blur-sm transition-all duration-300 hover:scale-105`}
                 >
                   <span className="flex items-center gap-2">
                     Learn More
@@ -315,10 +328,10 @@ export default function ServicesPage() {
                   <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4">
                     <Code className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">
+                  <h3 className={`${typography.heading.h4} text-white mb-3`}>
                     Web Development
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className={`${typography.body.small} text-gray-400`}>
                     Custom web applications built with cutting-edge technologies
                   </p>
                   <div className="flex gap-2 mt-4">
@@ -338,18 +351,18 @@ export default function ServicesPage() {
                   <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-4">
                     <Brain className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">
-                    AI Solutions
+                  <h3 className={`${typography.heading.h4} text-white mb-3`}>
+                    Mobile Apps
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    Intelligent automation powered by machine learning
+                  <p className={`${typography.body.small} text-gray-400`}>
+                    Mobile applications designed for seamless user experiences
                   </p>
                   <div className="flex gap-2 mt-4">
                     <span className="px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded-full text-xs text-purple-400 font-semibold">
-                      ML
+                      React Native
                     </span>
                     <span className="px-3 py-1 bg-pink-500/10 border border-pink-500/30 rounded-full text-xs text-pink-400 font-semibold">
-                      AI
+                      TypeScript
                     </span>
                   </div>
                 </div>
@@ -358,18 +371,18 @@ export default function ServicesPage() {
                   <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-4">
                     <Cloud className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-3">
-                    Cloud Services
+                  <h3 className={`${typography.heading.h4} text-white mb-3`}>
+                    Custom Software
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    Scalable infrastructure designed for the future
+                  <p className={`${typography.body.small} text-gray-400`}>
+                    Scalable software solutions tailored to your business needs
                   </p>
                   <div className="flex gap-2 mt-4">
                     <span className="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-xs text-blue-400 font-semibold">
-                      AWS
+                      Node.js
                     </span>
                     <span className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs text-cyan-400 font-semibold">
-                      Azure
+                      JavaScript
                     </span>
                   </div>
                 </div>
@@ -419,7 +432,7 @@ export default function ServicesPage() {
                     y: -8,
                     scale: 1.02,
                     transition: {
-                      type: "spring",
+                      type: "spring" as const,
                       stiffness: 300,
                       damping: 20,
                     },
@@ -431,27 +444,22 @@ export default function ServicesPage() {
                     className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}
                   />
 
-                  {/* Icon */}
-                  <motion.div
-                    className={`relative w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6`}
-                    whileHover={{
-                      scale: 1.15,
-                      rotate: 5,
-                      transition: {
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 10,
-                      },
-                    }}
+                  {/* Icon - Simplified */}
+                  <div
+                    className={`relative w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 transition-transform duration-200 group-hover:scale-110`}
                   >
                     <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
+                  </div>
 
                   {/* Title & Description */}
-                  <h3 className="relative text-2xl font-bold mb-3 text-white">
+                  <h3
+                    className={`relative ${typography.heading.h4} mb-3 text-white`}
+                  >
                     {service.title}
                   </h3>
-                  <p className="relative text-gray-400 mb-6 leading-relaxed">
+                  <p
+                    className={`relative ${typography.body.small} text-gray-400 mb-6`}
+                  >
                     {service.description}
                   </p>
 
@@ -481,7 +489,7 @@ export default function ServicesPage() {
                       transition={{
                         duration: 1.5,
                         repeat: Infinity,
-                        ease: "easeInOut",
+                        ease: [0.4, 0, 0.6, 1] as const,
                       }}
                     >
                       <ArrowRight className="w-4 h-4" />
@@ -505,7 +513,7 @@ export default function ServicesPage() {
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
             transition={{
               duration: 0.35,
-              ease: [0.25, 0.1, 0.25, 1],
+              ease: [0.4, 0, 0.6, 1] as const,
             }}
           >
             <motion.div
@@ -515,7 +523,7 @@ export default function ServicesPage() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.85, opacity: 0, y: 30 }}
               transition={{
-                type: "spring",
+                type: "spring" as const,
                 stiffness: 300,
                 damping: 30,
                 mass: 0.8,
@@ -528,19 +536,13 @@ export default function ServicesPage() {
 
                 return (
                   <>
-                    {/* Close Button */}
-                    <motion.button
+                    {/* Close Button - Simplified */}
+                    <button
                       onClick={closeModal}
-                      className="absolute top-6 right-6 w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full flex items-center justify-center transition-all duration-300 z-10"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      whileHover={{ scale: 1.1, rotate: 90 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
+                      className="absolute top-6 right-6 w-10 h-10 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full flex items-center justify-center transition-all duration-200 z-10"
                     >
                       <X className="w-5 h-5 text-gray-400" />
-                    </motion.button>
+                    </button>
 
                     {/* Gradient Background Overlay */}
                     <div
@@ -570,17 +572,25 @@ export default function ServicesPage() {
                           hidden: { opacity: 0, y: 20 },
                           visible: { opacity: 1, y: 0 },
                         }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.4, 0, 0.2, 1] as const,
+                        }}
                       >
                         <motion.div
                           className={`w-14 h-14 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}
                           whileHover={{ scale: 1.1, rotate: 5 }}
-                          transition={{ type: "spring", stiffness: 300 }}
+                          transition={{
+                            type: "spring" as const,
+                            stiffness: 300,
+                          }}
                         >
                           <Icon className="w-7 h-7 text-white" />
                         </motion.div>
                         <div className="flex-1">
-                          <h2 className="text-2xl font-black text-white">
+                          <h2
+                            className={`${typography.heading.h3} font-black text-white`}
+                          >
                             {service.title}
                           </h2>
                         </div>
@@ -593,9 +603,14 @@ export default function ServicesPage() {
                           hidden: { opacity: 0, y: 20 },
                           visible: { opacity: 1, y: 0 },
                         }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.4, 0, 0.2, 1] as const,
+                        }}
                       >
-                        <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <h3
+                          className={`${typography.heading.h5} text-white mb-3 flex items-center gap-2`}
+                        >
                           <motion.div
                             className={`w-1 h-5 bg-gradient-to-b ${service.gradient} rounded-full`}
                             initial={{ height: 0 }}
@@ -646,9 +661,14 @@ export default function ServicesPage() {
                           hidden: { opacity: 0, y: 20 },
                           visible: { opacity: 1, y: 0 },
                         }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.4, 0, 0.2, 1] as const,
+                        }}
                       >
-                        <h3 className="text-base font-bold text-white mb-2">
+                        <h3
+                          className={`${typography.heading.h6} text-white mb-2`}
+                        >
                           Technologies We Use
                         </h3>
                         <motion.div
@@ -675,7 +695,7 @@ export default function ServicesPage() {
                                 scale: 1.1,
                                 y: -2,
                                 transition: {
-                                  type: "spring",
+                                  type: "spring" as const,
                                   stiffness: 400,
                                   damping: 10,
                                 },
@@ -695,7 +715,10 @@ export default function ServicesPage() {
                           hidden: { opacity: 0, y: 20 },
                           visible: { opacity: 1, y: 0 },
                         }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.4, 0, 0.2, 1] as const,
+                        }}
                       >
                         <motion.div
                           className="flex-1"
@@ -755,10 +778,10 @@ export default function ServicesPage() {
                   <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 text-white">
+                  <h3 className={`${typography.heading.h5} mb-3 text-white`}>
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className={`${typography.body.small} text-gray-400`}>
                     {item.description}
                   </p>
                 </div>

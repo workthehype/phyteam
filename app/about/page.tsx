@@ -6,6 +6,7 @@ import Link from "next/link";
 import Header from "../components/Header";
 import FooterSection from "../components/FooterSection";
 import { fadeUp, scaleIn, slideIn, hoverLift } from "../utils/motion";
+import { typography } from "../utils/typography";
 
 const AboutPage = () => {
   const heroRef = useRef(null);
@@ -43,7 +44,7 @@ const AboutPage = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.4, 0, 0.2, 1] as const,
       },
     },
   };
@@ -143,7 +144,7 @@ const AboutPage = () => {
             {/* <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={isHeroInView ? { scale: 1, rotate: 0 } : {}}
-              transition={{ duration: 0.8, type: "spring" }}
+              transition={{ duration: 0.8, type: "spring" as const }}
               className="inline-block mb-6"
             >
               <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center text-3xl font-bold shadow-lg shadow-cyan-500/50">
@@ -155,7 +156,7 @@ const AboutPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className={`${typography.hero.h1} mb-6`}
             >
               <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent">
                 Innovating Tomorrow,
@@ -170,7 +171,7 @@ const AboutPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-xl text-gray-300 leading-relaxed mb-8 max-w-xl"
+              className={`${typography.body.large} text-gray-300 mb-8 max-w-xl`}
             >
               A fresh perspective on technology solutions. Founded in 2025, we
               bring modern innovation and cutting-edge expertise to transform
@@ -272,7 +273,11 @@ const AboutPage = () => {
               <motion.g
                 initial={{ rotate: 0 }}
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear" as const,
+                }}
                 style={{ transformOrigin: "250px 250px" }}
               >
                 <path
@@ -383,12 +388,14 @@ const AboutPage = () => {
               animate={isStoryInView ? "animate" : "initial"}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              <h2
+                className={`${typography.heading.h2} mb-6 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent`}
+              >
                 Our Story
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mb-8 rounded-full" />
 
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+              <p className={`${typography.body.base} text-gray-300 mb-6`}>
                 Founded in 2025, Phyteam emerged with a bold vision: to bridge
                 the gap between cutting-edge technology and business success.
                 We&apos;re a dynamic team of passionate developers, designers,
@@ -396,7 +403,7 @@ const AboutPage = () => {
                 partner for businesses across India.
               </p>
 
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+              <p className={`${typography.body.base} text-gray-300 mb-6`}>
                 Since our inception, we&apos;ve rapidly built a portfolio of
                 successful projects, helping startups and enterprises navigate
                 their digital transformation journey. Our fresh perspective,
@@ -406,7 +413,7 @@ const AboutPage = () => {
 
               <div className="grid grid-cols-2 gap-6 mt-10">
                 <motion.div
-                  {...hoverLift}
+                  whileHover={hoverLift}
                   className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-400/20 rounded-xl p-6 hover:border-cyan-400/50 transition-colors duration-300"
                 >
                   <div className="text-3xl font-bold text-cyan-400 mb-2">
@@ -415,7 +422,7 @@ const AboutPage = () => {
                   <div className="text-gray-400">Founded</div>
                 </motion.div>
                 <motion.div
-                  {...hoverLift}
+                  whileHover={hoverLift}
                   className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-400/20 rounded-xl p-6 hover:border-blue-400/50 transition-colors duration-300"
                 >
                   <div className="text-3xl font-bold text-blue-400 mb-2">
@@ -667,7 +674,9 @@ const AboutPage = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl" />
 
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed relative z-10 mb-12">
+            <p
+              className={`${typography.body.large} text-gray-300 relative z-10 mb-12`}
+            >
               To be the trusted technology partner that helps businesses
               navigate digital transformation with confidence. We believe in
               creating sustainable, scalable solutions that not only solve
@@ -677,7 +686,7 @@ const AboutPage = () => {
 
             <div className="grid md:grid-cols-3 gap-8 relative z-10">
               <motion.div
-                {...hoverLift}
+                whileHover={hoverLift}
                 className="text-center p-6 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-300"
               >
                 <div className="text-5xl mb-4">🎯</div>
@@ -689,7 +698,7 @@ const AboutPage = () => {
                 </p>
               </motion.div>
               <motion.div
-                {...hoverLift}
+                whileHover={hoverLift}
                 className="text-center p-6 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-300"
               >
                 <div className="text-5xl mb-4">💎</div>
@@ -701,7 +710,7 @@ const AboutPage = () => {
                 </p>
               </motion.div>
               <motion.div
-                {...hoverLift}
+                whileHover={hoverLift}
                 className="text-center p-6 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-300"
               >
                 <div className="text-5xl mb-4">🌟</div>
