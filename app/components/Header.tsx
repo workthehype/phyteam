@@ -171,7 +171,7 @@ const Header = memo(function Header({ onBookCallClick }: HeaderProps) {
             ))}
 
             {/* Mobile CTA */}
-            <div className="pt-10 mt-8 border-t border-cyan-400/30">
+            <div className="pt-10 mt-8 border-t border-cyan-400/30 mb-6">
               {onBookCallClick ? (
                 <button
                   onClick={() => {

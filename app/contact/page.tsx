@@ -332,7 +332,8 @@ const ContactPage = () => {
                 </h2>
                 <p className={`${typography.body.base} text-gray-400`}>
                   We&apos;re here to answer any questions you may have about our
-                  services. Reach out to us and we&apos;ll respond as soon as we can.
+                  services. Reach out to us and we&apos;ll respond as soon as we
+                  can.
                 </p>
               </div>
 

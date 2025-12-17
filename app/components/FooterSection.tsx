@@ -81,10 +81,10 @@ const FooterSection = () => {
           <div>
             <h3 className="font-semibold mb-4 text-white">Services</h3>
             <ul className="space-y-2">
-              <li className="text-gray-400 text-sm">Cloud Solutions</li>
-              <li className="text-gray-400 text-sm">Data & AI</li>
-              <li className="text-gray-400 text-sm">Cybersecurity</li>
-              <li className="text-gray-400 text-sm">Digital Workplace</li>
+              <li className="text-gray-400 text-sm">Website Development</li>
+              <li className="text-gray-400 text-sm">Custom Software Development</li>
+              <li className="text-gray-400 text-sm">Mobile App Development</li>
+              <li className="text-gray-400 text-sm">Digital Marketing</li>
             </ul>
           </div>
 

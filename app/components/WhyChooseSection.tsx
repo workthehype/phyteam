@@ -108,7 +108,9 @@ const WhyChooseSection = () => {
           <p className="text-cyan-400 text-sm uppercase tracking-[0.3em] mb-4 font-semibold">
             Trust
           </p>
-          <h2 className={`${typography.hero.h1} bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-white`}>
+          <h2
+            className={`${typography.hero.h1} bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-white`}
+          >
             Why Companies
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
